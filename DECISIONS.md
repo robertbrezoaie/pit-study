@@ -46,6 +46,8 @@ Rule 6 (freeze line): after the first real session, every change is logged here 
 25. `npm run load-test -- --no-test` creates non-test sessions. It exists **only** to check bandit updates against the in-memory dev DB; never run it against the real study.
 26. The smoke test grades each answer with the `upper` band, or `lower` for questions that are lower-only.
 28. **Pre-check counts letters and digits** (spec 7.1 says "fewer than 2 letters"). Found by the Mistral smoke test: the literal rule scored the correct answers "13" (DATA-H1), "12" (DATA-H3) and "x = 12" (WRLD-H3) as 0 without grading them, which would have sent learners who answered correctly to the feedback screen. Now "13" reaches the grader, while a lone "5" or "a" is still scored 0 without an LLM call.
+29. **Database calls time out after 10 s** (`lib/db.ts`). The first production test session had one `/api/feedback` request killed at Vercel's 30 s limit, although its LLM call took under 3 s. A hung database request is the likely cause. The feedback route also logs each phase (`{"ev":"feedback",…}`) so a repeat can be located in the Vercel logs.
+30. **Markdown marks are stripped from tutor text** before it is stored in `decisions.feedback_text` and shown (spec 9.1 says "no markdown"; Ministral 14B still wrote `**bold**` and `*italic*`). Only the marks are removed, never words; the raw model output stays in `llm_calls.response_text`. Same treatment for hints and worked examples.
 27. TypeScript is pinned to 5.x for known-good compatibility with the Next.js build.
 
 ## Freeze log

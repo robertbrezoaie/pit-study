@@ -11,6 +11,8 @@ export function db(): SupabaseClient {
   if (dev) return dev as SupabaseClient;
   client ??= createClient(env.supabaseUrl, env.supabaseKey, {
     auth: { persistSession: false, autoRefreshToken: false },
+    // A stuck connection must fail fast instead of holding the route until Vercel's 30 s limit.
+    global: { fetch: timedFetch },
   });
   return client;
 }
@@ -31,6 +33,14 @@ export class DbError extends Error {
 }
 
 export const UNIQUE_VIOLATION = '23505';
+
+const DB_TIMEOUT_MS = 10_000;
+
+function timedFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
+  const timeout = AbortSignal.timeout(DB_TIMEOUT_MS);
+  const signal = init?.signal ? AbortSignal.any([init.signal, timeout]) : timeout;
+  return fetch(input, { ...init, signal });
+}
 
 /** Returns a CallLogger that writes llm_calls rows for the given session. */
 export function llmLogger(sessionId: string | null) {

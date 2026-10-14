@@ -63,3 +63,14 @@ describe('spec 10.1 – usernames', () => {
     expect(c.map((x) => x.toLowerCase())).not.toContain('pandaninja42');
   });
 });
+
+describe('tutor text formatting', () => {
+  it('strips markdown marks the model adds, keeping the words', async () => {
+    const { stripMarkdown } = await import('@/lib/tutor');
+    expect(stripMarkdown('Să luăm aplicația **Calculatoare** de pe telefon.')).toBe('Să luăm aplicația Calculatoare de pe telefon.');
+    expect(stripMarkdown('ceva care să aleagă *fără* să repete')).toBe('ceva care să aleagă fără să repete');
+    expect(stripMarkdown('poți spune: *„Un pisoi mic și pufos”*')).toBe('poți spune: „Un pisoi mic și pufos”');
+    expect(stripMarkdown('### Pas 1\nfolosește `max-width`')).toBe('Pas 1\nfolosește max-width');
+    expect(stripMarkdown('5 * 3 = 15 și 2 * 2 = 4')).toBe('5 * 3 = 15 și 2 * 2 = 4');
+  });
+});

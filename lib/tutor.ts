@@ -13,7 +13,22 @@ export interface TutorResult {
   callId: string | null;
 }
 
-const tutorOutputSchema = z.object({ text: z.string().trim().min(1) });
+/**
+ * Removes markdown emphasis/headings/code marks the model sometimes adds despite "no markdown"
+ * (seen with Mistral: **bold**, *italic*). Words are kept; only the marks go. Raw text stays in llm_calls.
+ */
+export function stripMarkdown(text: string): string {
+  return text
+    .replace(/\*\*(.+?)\*\*/gs, '$1')
+    .replace(/__(.+?)__/gs, '$1')
+    .replace(/(^|[\s(„"])\*(?!\s)(.+?)(?<!\s)\*(?=[\s.,;:!?)”"]|$)/gm, '$1$2')
+    .replace(/`([^`]*)`/g, '$1')
+    .replace(/^#{1,6}\s+/gm, '')
+    .replace(/[ \t]+\n/g, '\n')
+    .trim();
+}
+
+const tutorOutputSchema = z.object({ text: z.string().trim().min(1).transform(stripMarkdown) });
 
 export function buildTutorUser(
   q: GradableQuestion,

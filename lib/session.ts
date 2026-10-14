@@ -330,6 +330,10 @@ function tutorFailedPatch(isTest: boolean) {
 /** Idempotent: allocates once per mistake (rule 5), then returns the same feedback on every call. */
 export async function getFeedback(s: SessionRow, questionId: string): Promise<FeedbackPayload> {
   const started = Date.now();
+  // Phase log: if a request ever stalls, the Vercel logs show the last phase reached.
+  const mark = (phase: string) =>
+    console.log(JSON.stringify({ ev: 'feedback', sid: s.id, qid: questionId, phase, ms: Date.now() - started }));
+  mark('start');
   const q = await getQuestion(questionId);
   let d = await loadDecision(s.id, q.id);
   let mine = false;
@@ -339,7 +343,9 @@ export async function getFeedback(s: SessionRow, questionId: string): Promise<Fe
     if (!first || first.grader_status === 'failed' || (first.score ?? 0) >= 2) {
       throw new HttpError(409, { error: 'state_mismatch', state: await buildState(s) });
     }
-    const alloc = allocate(await readPosterior(), env.randomShare);
+    const posterior = await readPosterior();
+    mark('posterior');
+    const alloc = allocate(posterior, env.randomShare);
     const { data, error } = await db()
       .from('decisions')
       .insert({
@@ -365,6 +371,7 @@ export async function getFeedback(s: SessionRow, questionId: string): Promise<Fe
       d = data as DecisionRow;
       mine = true;
     }
+    mark(mine ? `decided:${d!.assigned_arm}` : 'decision_exists');
     if (mine && d!.tutor_status === 'pending') {
       const kind = d!.assigned_arm as 'hint' | 'example';
       let res;
@@ -387,7 +394,9 @@ export async function getFeedback(s: SessionRow, questionId: string): Promise<Fe
         res.status === 'failed' || !res.text
           ? { ...tutorFailedPatch(s.is_test), llm_call_id: res.callId }
           : { tutor_status: res.status, feedback_text: res.text, llm_call_id: res.callId };
+      mark(`tutor:${res.status}`);
       d = (await updateDecision(d!.id, patch, true)) ?? (await loadDecision(s.id, q.id));
+      mark('decision_updated');
     }
   }
 
@@ -407,6 +416,7 @@ export async function getFeedback(s: SessionRow, questionId: string): Promise<Fe
   }
   const wait = MIN_LOADING_MS - (Date.now() - started);
   if (wait > 0) await sleep(wait);
+  mark('done');
 
   return d!.delivered_arm === 'plain' ? { kind: 'plain' } : { kind: d!.delivered_arm, text: d!.feedback_text ?? undefined };
 }
