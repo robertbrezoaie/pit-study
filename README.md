@@ -16,6 +16,16 @@ npm run load-test -- --base http://localhost:3000   # 30 parallel test learners,
 
 The in-memory database is reset on every server restart.
 
+## Where it runs
+
+| | |
+|---|---|
+| Code | github.com/robertbrezoaie/pit-study (private); every push to `main` deploys |
+| Hosting | Vercel project `pit-study`, functions in `fra1`; env vars set for Production only |
+| Database | Supabase project `pit-study` (ref `ndnrvthleemlhwnsckmc`, Central EU Frankfurt) |
+| LLM | Mistral AI, `ministral-14b-2512` for grader and tutor |
+| Local copies of the production settings | `.env.production.local` (gitignored; scripts: `ENV_FILE=.env.production.local npm run …`) |
+
 ## Set up the real study
 
 1. **Supabase**: create a project in an **EU (Frankfurt)** region. In the SQL Editor run `supabase/migrations/0001_init.sql` (or `supabase link` + `supabase db push`). Save the queries from `supabase/queries.sql` in the SQL Editor.
