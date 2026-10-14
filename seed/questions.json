@@ -1,0 +1,1736 @@
+[
+  {
+    "id": "ALG-W1",
+    "domain": "algorithms",
+    "tier": "warmup",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Completează propoziția: „Dacă plouă afară, atunci iau cu mine ___.” Ce pui în locul liniuței?",
+    "reference_answer_ro": "Umbrela (sau o geacă de ploaie, o pelerină, o glugă). Este o regulă „dacă… atunci…”: dacă e adevărată condiția (plouă), fac acțiunea (iau umbrela).",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Răspuns legat de vreme, dar care nu apără de ploaie (de exemplu „ochelari de soare”).",
+      "2": "Un lucru care te apără de ploaie (umbrelă, geacă de ploaie, pelerină, glugă, cizme).",
+      "3": "Un lucru potrivit și o observație despre regulă (de exemplu că este o condiție „dacă… atunci…” sau ce faci „altfel”, când nu plouă)."
+    },
+    "misconceptions": [
+      {
+        "tag": "condition_action_mixup",
+        "description": "Încurcă condiția (plouă) cu acțiunea (iau umbrela)."
+      },
+      {
+        "tag": "any_object",
+        "description": "Pune orice obiect, fără legătură cu condiția."
+      }
+    ],
+    "explanation_ro": "Răspunsul potrivit este umbrela sau orice te apără de ploaie. Exact așa funcționează un „dacă” în programare: întâi se verifică o condiție (plouă?), apoi se face acțiunea doar dacă ea este adevărată. Un robot face la fel: „Dacă am un obstacol în față, atunci opresc motoarele.”"
+  },
+  {
+    "id": "ALG-W2",
+    "domain": "algorithms",
+    "tier": "warmup",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un algoritm este o listă de pași, în ordine. Scrie 3 pași, în ordine, ca să faci un sandviș.",
+    "reference_answer_ro": "De exemplu: 1. Iau două felii de pâine. 2. Pun pe o felie ce îmi place (unt, cașcaval, șuncă). 3. Pun cealaltă felie deasupra. Ordinea contează.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Un singur pas foarte general („fac sandvișul”) sau pași într-o ordine care nu are sens.",
+      "2": "Cel puțin 3 pași care au sens, într-o ordine bună.",
+      "3": "Pași clari, într-o ordine bună, și o observație că ordinea contează sau un pas în plus de precizie (de exemplu „mă spăl pe mâini”, „tai pâinea”)."
+    },
+    "misconceptions": [
+      {
+        "tag": "order_irrelevant",
+        "description": "Crede că ordinea pașilor nu contează."
+      },
+      {
+        "tag": "too_vague",
+        "description": "Scrie un singur pas foarte general („fac sandvișul”)."
+      }
+    ],
+    "explanation_ro": "Un sandviș se poate face așa: iei două felii de pâine, pui pe una ce îți place, apoi o acoperi cu cealaltă. Dacă schimbi ordinea (pui felia de sus înainte de umplutură), iese prost. Un program este la fel: calculatorul face pașii exact în ordinea în care îi scrii."
+  },
+  {
+    "id": "ALG-E1",
+    "domain": "algorithms",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "În Scratch, Roblox sau alt program, de ce folosim un bloc „repetă” (o buclă) în loc să scriem aceeași comandă de 20 de ori?",
+    "reference_answer_ro": "Ca să scriem comanda o singură dată și să fie repetată automat: codul este mai scurt, mai ușor de citit și de schimbat (schimbi un singur număr) și apar mai puține greșeli.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune doar că „e mai bine” sau „e mai ușor”, fără să spună de ce.",
+      "2": "Spune că bucla repetă automat, deci scriem mai puțin cod sau lucrăm mai repede.",
+      "3": "Codul este mai scurt și, în plus, mai ușor de schimbat (de exemplu schimbi doar numărul de repetări) sau apar mai puține greșeli."
+    },
+    "misconceptions": [
+      {
+        "tag": "loop_faster_computer",
+        "description": "Crede că bucla face calculatorul mult mai rapid, nu că ne ajută pe noi să scriem mai puțin."
+      },
+      {
+        "tag": "loop_only_infinite",
+        "description": "Crede că orice buclă se repetă la infinit."
+      }
+    ],
+    "explanation_ro": "Bucla repetă pentru noi aceleași comenzi. În loc de 20 de blocuri identice scriem unul singur și spunem „repetă de 20 de ori”. Codul este mai scurt, se citește mai ușor, iar dacă vrei 30 de repetări schimbi doar un număr."
+  },
+  {
+    "id": "ALG-E2",
+    "domain": "algorithms",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Multe programe pornesc cu un bloc „Când…”, de exemplu „Când se dă click pe steag”. Dă alt exemplu de „Când…” dintr-un joc sau dintr-o aplicație și spune ce acțiune pornește.",
+    "reference_answer_ro": "De exemplu: „Când apăs săgeata dreapta” → personajul merge la dreapta; „Când se apasă butonul” → aplicația vorbește; „Când personajul atinge moneda” → scorul crește; „Când telefonul este agitat” → apare o predicție. Acestea se numesc evenimente.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Doar un eveniment fără acțiune, doar o acțiune fără eveniment, sau repetă exemplul cu steagul.",
+      "2": "Un eveniment potrivit și acțiunea pe care o pornește.",
+      "3": "Eveniment și acțiune potrivite, plus ideea de „eveniment” sau faptul că acel cod așteaptă să se întâmple ceva."
+    },
+    "misconceptions": [
+      {
+        "tag": "event_is_action",
+        "description": "Confundă evenimentul (ce se întâmplă) cu acțiunea pe care o face codul."
+      },
+      {
+        "tag": "code_runs_always",
+        "description": "Crede că tot codul rulează imediat, nu doar când are loc evenimentul."
+      }
+    ],
+    "explanation_ro": "Un „Când…” se numește eveniment: codul de sub el așteaptă să se întâmple ceva și abia atunci pornește. De exemplu: „Când apăs săgeata dreapta, personajul merge la dreapta” sau „Când se apasă butonul, telefonul spune Salut”. Aproape orice joc și orice aplicație funcționează cu evenimente."
+  },
+  {
+    "id": "ALG-E3",
+    "domain": "algorithms",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Care este diferența dintre „repetă de 10 ori” și „la infinit” (forever)?",
+    "reference_answer_ro": "„Repetă de 10 ori” face comenzile de exact 10 ori, apoi se oprește și programul merge mai departe. „La infinit” le repetă mereu, fără să se oprească singură (până oprești programul). „La infinit” se folosește, de exemplu, ca să verifici tot timpul tastele într-un joc.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Descrie corect doar una dintre cele două bucle.",
+      "2": "Spune că prima se oprește după 10 repetări, iar a doua nu se oprește.",
+      "3": "Diferența corectă și un exemplu de când folosești fiecare (de exemplu „la infinit” pentru mișcarea continuă sau verificarea tastelor)."
+    },
+    "misconceptions": [
+      {
+        "tag": "forever_means_long",
+        "description": "Crede că „la infinit” înseamnă doar „de foarte multe ori”, dar se oprește la un moment dat."
+      },
+      {
+        "tag": "same_loops",
+        "description": "Crede că cele două bucle fac același lucru."
+      }
+    ],
+    "explanation_ro": "„Repetă de 10 ori” numără: face pașii de 10 ori, apoi trece mai departe. „La infinit” nu se oprește niciodată singură, de aceea o folosim când ceva trebuie verificat tot timpul, de exemplu dacă jucătorul apasă o tastă sau dacă șarpele a atins marginea."
+  },
+  {
+    "id": "ALG-E4",
+    "domain": "algorithms",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un robot merge înainte prin cameră. Scrie o regulă „dacă… atunci…” care să-l împiedice să se lovească de perete.",
+    "reference_answer_ro": "Dacă senzorul vede un obstacol (peretele) aproape, în față, atunci robotul oprește motoarele (sau se întoarce). Altfel, merge înainte.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Doar acțiunea („se oprește”) fără condiție, sau doar condiția fără acțiune.",
+      "2": "O condiție despre perete sau obstacol și o acțiune potrivită (se oprește, se întoarce, dă înapoi).",
+      "3": "Condiție și acțiune potrivite, plus partea „altfel” (merge înainte) sau cum află robotul (un senzor de distanță)."
+    },
+    "misconceptions": [
+      {
+        "tag": "robot_sees_like_human",
+        "description": "Crede că robotul „vede” singur peretele, fără senzor și fără regulă."
+      },
+      {
+        "tag": "action_without_condition",
+        "description": "Scrie doar acțiunea, fără condiția care o declanșează."
+      }
+    ],
+    "explanation_ro": "O regulă bună este: „Dacă senzorul vede un perete aproape, atunci oprește motoarele (sau întoarce-te); altfel mergi înainte.” Robotul nu știe singur unde este peretele: are nevoie de un senzor care măsoară distanța și de o condiție care verifică ce a măsurat."
+  },
+  {
+    "id": "ALG-E5",
+    "domain": "algorithms",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Ce este un „bug” într-un program și ce faci prima dată când observi unul?",
+    "reference_answer_ro": "Un bug este o greșeală în program, care îl face să nu meargă cum vrem. Prima dată încerci să-l faci să apară din nou și cauți unde apare: rulezi pas cu pas, citești mesajul de eroare, verifici ultima schimbare. Apoi repari și testezi din nou.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Doar una dintre cele două părți (definiția sau un prim pas), sau foarte vag („îl repar”).",
+      "2": "Spune că este o greșeală în program și un prim pas rezonabil (testez, caut unde apare, citesc eroarea).",
+      "3": "Definiție corectă, un prim pas bun și ideea că, după reparare, testezi din nou."
+    },
+    "misconceptions": [
+      {
+        "tag": "bug_is_virus",
+        "description": "Crede că un bug este un virus venit din afară."
+      },
+      {
+        "tag": "fix_by_restart",
+        "description": "Crede că un bug se rezolvă doar repornind calculatorul."
+      }
+    ],
+    "explanation_ro": "Un bug este o greșeală în cod: programul face altceva decât am vrut. Programatorii îl caută ca detectivii: îl fac să apară din nou, citesc mesajul de eroare, verifică pas cu pas ce face codul. După ce îl repară, testează din nou, ca să fie siguri că a dispărut."
+  },
+  {
+    "id": "ALG-H1",
+    "domain": "algorithms",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un program trebuie să afișeze numerele de la 1 la 100, dar afișează doar de la 1 la 99. Ce greșeală ar putea fi în program și cum ai repara-o?",
+    "reference_answer_ro": "Bucla se oprește prea devreme: de exemplu condiția este i < 100 în loc de i <= 100, range(1, 100) în loc de range(1, 101), sau „repetă de 99 de ori” în loc de 100. Se repară schimbând limita sau semnul comparației, ca să fie inclus și 100.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune vag că este o greșeală în buclă sau în program, fără să o identifice.",
+      "2": "Identifică faptul că limita sau condiția buclei se oprește prea devreme.",
+      "3": "Identifică problema limitei și propune o reparație concretă (de exemplu <= 100, range(1, 101) sau „repetă de 100 de ori”)."
+    },
+    "misconceptions": [
+      {
+        "tag": "start_value_wrong",
+        "description": "Crede că problema este valoarea de început a buclei."
+      },
+      {
+        "tag": "patch_not_fix",
+        "description": "Propune afișarea separată a lui 100 în loc să repare condiția."
+      }
+    ],
+    "explanation_ro": "Aceasta este o greșeală foarte des întâlnită, numită „off-by-one” (greșit cu unu). Bucla se oprește înainte de 100 pentru că se repetă cu o dată prea puțin, de exemplu condiția este „mai mic decât 100”. Dacă o schimbi în „mai mic sau egal cu 100” (sau folosești range(1, 101) în Python), programul afișează și numărul 100."
+  },
+  {
+    "id": "ALG-H2",
+    "domain": "algorithms",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "În Snake, jocul trebuie să se termine când șarpele atinge marginea. Blocul „dacă atinge marginea, atunci Game Over” este pus o singură dată, la început, nu într-o buclă. Ce se întâmplă și cum repari?",
+    "reference_answer_ro": "Condiția este verificată o singură dată, la pornire, când șarpele încă nu atinge marginea. După aceea nu mai este verificată, deci jocul nu se termină când șarpele atinge marginea. Reparația: pui verificarea într-o buclă „la infinit” (sau folosești „repetă până când atinge marginea”), ca să fie verificată tot timpul.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune că jocul nu se termină, fără să explice de ce, sau propune o reparație fără legătură cu verificarea.",
+      "2": "Explică faptul că verificarea se face o singură dată (la început), deci nu prinde momentul atingerii.",
+      "3": "Explică problema și propune să pună verificarea într-o buclă „la infinit” sau „repetă până când”."
+    },
+    "misconceptions": [
+      {
+        "tag": "if_waits",
+        "description": "Crede că un „dacă” așteaptă singur până devine adevărat."
+      },
+      {
+        "tag": "if_checks_forever",
+        "description": "Crede că o condiție scrisă o dată este verificată automat tot timpul."
+      }
+    ],
+    "explanation_ro": "Un „dacă” verifică condiția o singură dată, exact în momentul în care programul ajunge la el. La începutul jocului șarpele nu atinge marginea, deci condiția este falsă, iar apoi nimeni nu o mai verifică. Dacă o pui într-o buclă „la infinit”, este verificată la fiecare pas și jocul se oprește exact când șarpele atinge marginea."
+  },
+  {
+    "id": "ALG-H3",
+    "domain": "algorithms",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Personajul trebuie să spună „Am câștigat!” abia când scorul ajunge la 10. Dar el spune asta chiar de la începutul jocului. Care ar putea fi problema și cum o repari?",
+    "reference_answer_ro": "Mesajul nu este pus sub o condiție (sau condiția este greșită, de exemplu „scor < 10” în loc de „scor = 10”). Reparația: „dacă scor = 10 (sau scor ≥ 10), atunci spune «Am câștigat!»”, verificat într-o buclă, sau „așteaptă până când scor = 10” și apoi spune mesajul.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune vag că este o problemă cu scorul sau cu ordinea, fără să o identifice.",
+      "2": "Identifică faptul că lipsește condiția „dacă scorul este 10” sau că aceasta este greșită.",
+      "3": "Identifică problema și propune o reparație concretă (condiția corectă, verificată într-o buclă, sau „așteaptă până când scor = 10”)."
+    },
+    "misconceptions": [
+      {
+        "tag": "message_needs_no_condition",
+        "description": "Crede că mesajul apare singur la momentul potrivit, fără condiție."
+      },
+      {
+        "tag": "wrong_comparison",
+        "description": "Folosește o comparație greșită (de exemplu „scor < 10”)."
+      }
+    ],
+    "explanation_ro": "Calculatorul face exact ce scrie în cod, în ordine. Dacă blocul „spune Am câștigat!” nu este pus sub o condiție, el rulează imediat. Soluția este „așteaptă până când scor = 10” sau „dacă scor = 10, atunci spune Am câștigat!”, verificat într-o buclă, ca mesajul să apară doar când jucătorul chiar a câștigat."
+  },
+  {
+    "id": "ALG-H4",
+    "domain": "algorithms",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un robot trebuie să meargă înainte și să se oprească abia când senzorul vede un obstacol. Nu știi cât de departe este obstacolul. Ce fel de buclă ai folosi și de ce?",
+    "reference_answer_ro": "O buclă „repetă până când” (sau „cât timp”, while): „repetă mergi înainte până când senzorul vede obstacolul”, apoi oprește. „Repetă de 10 ori” nu e potrivită, pentru că nu știi câți pași sunt; „la infinit” singură nu se oprește (doar dacă pui în ea un „dacă” care oprește robotul).",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Alege o buclă fără să explice, sau alege „repetă de N ori” cu o idee doar parțial bună.",
+      "2": "Alege „repetă până când” sau „cât timp” (ori „la infinit” cu un „dacă” care oprește robotul) și leagă oprirea de senzor.",
+      "3": "Răspunsul de nivel 2 și explică de ce „repetă de 10 ori” nu e potrivită (nu știm numărul de pași)."
+    },
+    "misconceptions": [
+      {
+        "tag": "fixed_count_ok",
+        "description": "Crede că un număr fix de repetări merge mereu."
+      },
+      {
+        "tag": "forever_stops_itself",
+        "description": "Crede că bucla „la infinit” se oprește singură când apare obstacolul."
+      }
+    ],
+    "explanation_ro": "Când nu știm de câte ori trebuie repetat ceva, folosim „repetă până când” (sau „cât timp”, while). Robotul merge înainte și, la fiecare pas, verifică senzorul; când vede obstacolul, bucla se termină și robotul se oprește. „Repetă de 10 ori” ar putea fi prea puțin sau prea mult."
+  },
+  {
+    "id": "ALG-H5",
+    "domain": "algorithms",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un program are bucla „cât timp viteza > 0: mergi înainte”, dar în interiorul buclei nimeni nu schimbă viteza. Viteza pornește de la 5. Ce se întâmplă?",
+    "reference_answer_ro": "Viteza rămâne mereu 5, deci condiția „viteza > 0” este mereu adevărată și bucla nu se termină niciodată (buclă infinită): personajul sau robotul merge înainte la nesfârșit, iar programul se poate bloca. Trebuie ca în buclă să scadă viteza sau să existe altă condiție de oprire (de exemplu un senzor).",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune că „merge înainte”, fără să observe că nu se mai oprește.",
+      "2": "Spune că bucla nu se oprește niciodată (buclă infinită), pentru că viteza nu se schimbă.",
+      "3": "Explică bucla infinită și propune o reparație (scade viteza în buclă sau adaugă o condiție de oprire)."
+    },
+    "misconceptions": [
+      {
+        "tag": "loop_counts_value",
+        "description": "Crede că bucla se repetă de atâtea ori cât este valoarea variabilei (5)."
+      },
+      {
+        "tag": "condition_changes_itself",
+        "description": "Crede că o condiție se schimbă singură, fără cod care să schimbe variabila."
+      }
+    ],
+    "explanation_ro": "O buclă „cât timp” se oprește doar când condiția devine falsă. Aici viteza rămâne 5, deci „viteza > 0” este mereu adevărat și bucla merge la nesfârșit. Ca să se oprească, trebuie să schimbăm ceva în buclă, de exemplu să scădem viteza cu 1 la fiecare pas sau să verificăm un senzor."
+  },
+  {
+    "id": "DATA-W1",
+    "domain": "data",
+    "tier": "warmup",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Într-un joc, ce număr se schimbă de obicei când prinzi o monedă sau o stea?",
+    "reference_answer_ro": "Scorul (punctele, numărul de monede sau de stele). De obicei crește cu 1 sau cu câte puncte valorează moneda. Acest număr este ținut într-o variabilă.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Un răspuns vag („un număr”, „ceva se schimbă”), fără să spună care.",
+      "2": "Scorul, punctele sau numărul de monede/stele crește.",
+      "3": "Scorul crește și spune că este păstrat într-o variabilă sau cu cât crește."
+    },
+    "misconceptions": [
+      {
+        "tag": "score_decreases",
+        "description": "Crede că scorul scade când prinzi o monedă."
+      },
+      {
+        "tag": "number_is_fixed",
+        "description": "Crede că numerele din joc nu se pot schimba în timpul jocului."
+      }
+    ],
+    "explanation_ro": "Când prinzi o monedă, de obicei crește scorul (punctele sau numărul de monede). Programul ține acest număr într-o variabilă numită, de exemplu, „scor” și îi adaugă 1 (sau mai mult) de fiecare dată când personajul atinge o monedă."
+  },
+  {
+    "id": "DATA-W2",
+    "domain": "data",
+    "tier": "warmup",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "O variabilă este ca o cutie cu o etichetă (numele ei) și ceva înăuntru (valoarea ei). Dă un exemplu de variabilă dintr-un joc: cum s-ar numi și ce valoare ar putea avea?",
+    "reference_answer_ro": "De exemplu: vieți = 3, scor = 0, viteză = 10, nivel = 1, numeJucător = „Alex”.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Doar un nume sau doar o valoare, fără cealaltă parte.",
+      "2": "Un nume potrivit și o valoare potrivită.",
+      "3": "Nume și valoare potrivite, plus când sau cum se schimbă valoarea în joc."
+    },
+    "misconceptions": [
+      {
+        "tag": "variable_is_value",
+        "description": "Confundă numele variabilei cu valoarea ei."
+      },
+      {
+        "tag": "variable_never_changes",
+        "description": "Crede că o variabilă are mereu aceeași valoare."
+      }
+    ],
+    "explanation_ro": "Un exemplu este variabila „vieți” cu valoarea 3. Numele rămâne același, dar valoarea se poate schimba: când personajul este lovit, vieți devine 2. Așa țin jocurile minte scorul, viteza, nivelul sau numele jucătorului."
+  },
+  {
+    "id": "DATA-E1",
+    "domain": "data",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "La ce folosește variabila „vieți” într-un joc și când se schimbă valoarea ei?",
+    "reference_answer_ro": "Ține minte câte vieți mai are jucătorul. Scade când personajul este lovit sau atinge un inamic ori o capcană, poate crește când prinde un bonus, iar când ajunge la 0 jocul se termină (Game Over).",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune doar la ce folosește sau doar când se schimbă.",
+      "2": "La ce folosește și cel puțin un moment când se schimbă (de exemplu scade când ești lovit).",
+      "3": "Răspunsul de nivel 2 și ce se întâmplă când ajunge la 0 (Game Over)."
+    },
+    "misconceptions": [
+      {
+        "tag": "lives_equals_score",
+        "description": "Confundă viețile cu scorul."
+      },
+      {
+        "tag": "lives_change_alone",
+        "description": "Crede că valoarea se schimbă singură, fără cod."
+      }
+    ],
+    "explanation_ro": "Variabila „vieți” ține minte de câte ori mai poate greși jucătorul. Codul scade 1 din ea când personajul este lovit și, uneori, adaugă 1 la un bonus. Când vieți ajunge la 0, o regulă „dacă vieți = 0, atunci Game Over” termină jocul."
+  },
+  {
+    "id": "DATA-E2",
+    "domain": "data",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Care este diferența dintre o variabilă și o listă? Dă un exemplu de listă.",
+    "reference_answer_ro": "O variabilă ține o singură valoare (de exemplu scor = 5). O listă ține mai multe valori, în ordine (de exemplu lista de întrebări dintr-un quiz, lista de predicții din Magic 8 Ball, numele jucătorilor, lista de cumpărături).",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Doar un exemplu de listă, fără diferență, sau o diferență vagă.",
+      "2": "Spune că variabila ține o singură valoare, iar lista mai multe.",
+      "3": "Diferența corectă și un exemplu potrivit de listă."
+    },
+    "misconceptions": [
+      {
+        "tag": "list_is_long_variable",
+        "description": "Crede că o listă este doar o variabilă cu un nume mai lung."
+      },
+      {
+        "tag": "list_unordered",
+        "description": "Nu știe că elementele unei liste au poziții (o ordine)."
+      }
+    ],
+    "explanation_ro": "O variabilă este o cutie cu un singur lucru înăuntru. O listă este ca un raft cu mai multe cutii numerotate: poziția 1, 2, 3… De exemplu, un quiz ține toate întrebările într-o listă și le ia pe rând, după poziție."
+  },
+  {
+    "id": "DATA-E3",
+    "domain": "data",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "De ce este mai bine să folosești o variabilă „viteza” decât să scrii numărul 10 în fiecare loc din cod unde personajul se mișcă?",
+    "reference_answer_ro": "Dacă vrei altă viteză, o schimbi într-un singur loc, nu peste tot. Poți schimba viteza și în timpul jocului (de exemplu crește la fiecare nivel). Faci mai puține greșeli, iar codul este mai ușor de înțeles.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune doar că „e mai ușor” sau „e mai bine”, fără motiv.",
+      "2": "Un motiv corect: schimbi valoarea într-un singur loc sau o poți schimba în timpul jocului.",
+      "3": "Două motive corecte sau un motiv cu un exemplu clar."
+    },
+    "misconceptions": [
+      {
+        "tag": "variable_slower",
+        "description": "Crede că variabila face programul mai lent sau mai complicat, fără niciun câștig."
+      },
+      {
+        "tag": "numbers_same_as_variable",
+        "description": "Crede că un număr scris direct se schimbă la fel de ușor în tot programul."
+      }
+    ],
+    "explanation_ro": "Cu o variabilă „viteza”, valoarea stă într-un singur loc. Dacă vrei jocul mai greu, schimbi un număr și toate mișcările se schimbă. Poți chiar să crești viteza în timpul jocului, la fiecare nivel. Cu numărul 10 scris peste tot, ar trebui să-l cauți și să-l schimbi în fiecare loc."
+  },
+  {
+    "id": "DATA-E4",
+    "domain": "data",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un program trebuie să rețină numele jucătorului și vârsta lui. Ce fel de valoare este numele și ce fel de valoare este vârsta?",
+    "reference_answer_ro": "Numele este text (șir de caractere, string); vârsta este un număr (întreg, int). Diferența contează: cu numere poți face calcule, cu text nu.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Corect doar pentru unul dintre ele.",
+      "2": "Numele este text (litere, cuvânt, string), iar vârsta este un număr.",
+      "3": "Ambele corecte și un motiv pentru care contează (de exemplu poți aduna vârste, dar nu nume) sau termenii string/int."
+    },
+    "misconceptions": [
+      {
+        "tag": "everything_is_text",
+        "description": "Crede că totul în calculator este text, deci tipul nu contează."
+      },
+      {
+        "tag": "age_is_text",
+        "description": "Crede că vârsta se păstrează la fel ca un cuvânt."
+      }
+    ],
+    "explanation_ro": "Numele este text (în programare se spune „șir de caractere” sau string), iar vârsta este un număr (întreg). Tipul contează: cu numere poți face calcule, de exemplu „vârsta peste 5 ani = vârsta + 5”. Cu text nu poți face calcule, dar poți lipi cuvinte unul de altul."
+  },
+  {
+    "id": "DATA-E5",
+    "domain": "data",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Într-un joc, mâncarea sau o monedă trebuie să apară de fiecare dată în alt loc. Ce ai folosi ca locul să fie diferit de fiecare dată?",
+    "reference_answer_ro": "Un număr aleatoriu (random): de exemplu „mergi la o poziție aleatorie” sau x = un număr aleatoriu între -200 și 200, y = un număr aleatoriu între anumite limite, ca obiectul să rămână pe ecran.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune că o mută „de mână” sau ceva vag („în alt loc”), fără ideea de întâmplător.",
+      "2": "Ideea de valoare aleatorie, random, „la întâmplare”.",
+      "3": "Valori aleatorii pentru poziție (X și Y) și grijă să rămână pe ecran (între anumite limite)."
+    },
+    "misconceptions": [
+      {
+        "tag": "random_means_chaos",
+        "description": "Crede că „aleatoriu” poate pune obiectul oriunde, chiar și în afara ecranului."
+      },
+      {
+        "tag": "manual_positions",
+        "description": "Crede că trebuie scrise de mână toate pozițiile posibile."
+      }
+    ],
+    "explanation_ro": "Folosim un număr aleatoriu (random). Programul alege singur, de fiecare dată, un număr dintr-un interval, de exemplu X între -200 și 200. Așa moneda apare mereu în alt loc, dar tot pe ecran, pentru că noi am ales limitele."
+  },
+  {
+    "id": "DATA-H1",
+    "domain": "data",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Scorul pornește de la 0. Programul repetă de 3 ori: „adaugă 5 la scor”. După buclă: „scade 2 din scor”. Cât este scorul la final? Explică pe scurt.",
+    "reference_answer_ro": "13. După buclă scorul este 0 + 5 + 5 + 5 = 15, apoi 15 − 2 = 13.",
+    "rubric": {
+      "0": "Răspuns lipsă sau un rezultat greșit fără nicio explicație.",
+      "1": "Rezultat greșit, dar cu o idee parțial corectă (de exemplu 15, uitând scăderea, sau 9, scăzând 2 la fiecare repetare).",
+      "2": "Rezultatul corect: 13.",
+      "3": "13 și explicația pașilor (15 după buclă, apoi minus 2)."
+    },
+    "misconceptions": [
+      {
+        "tag": "subtract_inside_loop",
+        "description": "Scade 2 la fiecare repetare, deși scăderea este după buclă (rezultat 9)."
+      },
+      {
+        "tag": "loop_once",
+        "description": "Execută bucla o singură dată (rezultat 3)."
+      }
+    ],
+    "explanation_ro": "Bucla adaugă 5 de trei ori: 0 → 5 → 10 → 15. Abia după ce bucla s-a terminat se scad 2, deci 15 − 2 = 13. Când urmărești un program, e util să scrii valoarea variabilei după fiecare pas."
+  },
+  {
+    "id": "DATA-H2",
+    "domain": "data",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Într-un joc, la fiecare joc nou scorul nu pornește de la 0, ci de unde a rămas data trecută. Ce ai uitat să faci și unde în cod?",
+    "reference_answer_ro": "Ai uitat să setezi (să resetezi) scorul la 0 la începutul jocului: de exemplu „când se dă click pe steag → setează scor la 0”, sau la pornirea jocului ori când intră jucătorul.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune că este o problemă cu scorul, fără reparație, sau propune doar să schimbe scorul la final.",
+      "2": "Spune că scorul trebuie setat (resetat) la 0.",
+      "3": "Setează scorul la 0 și spune unde: la începutul jocului (la evenimentul de start)."
+    },
+    "misconceptions": [
+      {
+        "tag": "variables_reset_alone",
+        "description": "Crede că variabilele se pun singure la 0 la fiecare pornire."
+      },
+      {
+        "tag": "reset_at_end",
+        "description": "Pune resetarea doar la final, unde poate fi sărită dacă jocul este oprit."
+      }
+    ],
+    "explanation_ro": "Variabilele își păstrează valoarea până le schimbi tu. De aceea, primul lucru la începutul jocului (de exemplu „când se dă click pe steag”) trebuie să fie „setează scor la 0”. La fel faci cu viețile, timpul sau viteza."
+  },
+  {
+    "id": "DATA-H3",
+    "domain": "data",
+    "tier": "hard",
+    "bands": [
+      "upper"
+    ],
+    "prompt_ro": "Variabila x are valoarea 5. Programul face, pe rând: x = x + 1, apoi x = x * 2. Cât este x la final?",
+    "reference_answer_ro": "12. Întâi x devine 5 + 1 = 6, apoi 6 * 2 = 12. Semnul = înseamnă „pune în x valoarea din dreapta”, nu „este egal” ca la matematică.",
+    "rubric": {
+      "0": "Răspuns lipsă, un rezultat greșit fără explicație, sau spune că x = x + 1 este imposibil.",
+      "1": "Rezultat greșit, dar cu o idee parțial bună (de exemplu 11, făcând înmulțirea înainte de adunare, sau 6, uitând al doilea pas).",
+      "2": "12.",
+      "3": "12 și explicația pașilor (6, apoi 12) sau a semnului =."
+    },
+    "misconceptions": [
+      {
+        "tag": "equals_is_math",
+        "description": "Citește „x = x + 1” ca pe o ecuație de la matematică, care nu poate fi adevărată."
+      },
+      {
+        "tag": "order_ignored",
+        "description": "Face operațiile în altă ordine decât cea din program."
+      }
+    ],
+    "explanation_ro": "În programare, „x = x + 1” înseamnă: ia valoarea lui x, adaugă 1 și pune rezultatul înapoi în x. Deci x devine 6. Apoi „x = x * 2” îl face 6 × 2 = 12. Semnul = este aici o atribuire („pune în”), nu o egalitate ca la matematică."
+  },
+  {
+    "id": "DATA-H4",
+    "domain": "data",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un quiz are o listă cu 5 întrebări. După ultima întrebare, programul încearcă să afișeze întrebarea numărul 6 și apare o eroare. De ce apare eroarea și cum o repari?",
+    "reference_answer_ro": "Lista are doar 5 elemente, deci poziția 6 nu există. (În Python pozițiile încep de la 0, deci ultima este 4, dar ideea este aceeași.) Înainte să treci la următoarea întrebare, verifici: dacă numărul întrebării este mai mare decât lungimea listei, oprești quiz-ul (afișezi „Gata!” și scorul) sau revii la prima întrebare.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune că „lista s-a terminat” sau că e o greșeală, fără reparație clară; sau dă o reparație fără explicație.",
+      "2": "Explică faptul că întrebarea 6 nu există în listă (lista are doar 5 elemente).",
+      "3": "Explică și propune o verificare înainte de afișare (dacă numărul depășește lungimea listei, termină quiz-ul sau revino la început)."
+    },
+    "misconceptions": [
+      {
+        "tag": "list_infinite",
+        "description": "Crede că o listă continuă singură după ultimul element."
+      },
+      {
+        "tag": "add_empty_item",
+        "description": "Propune doar adăugarea unei întrebări goale, fără verificare."
+      }
+    ],
+    "explanation_ro": "O listă cu 5 elemente are doar 5 poziții; poziția 6 nu există, de aceea apare eroarea. Înainte să afișezi următoarea întrebare, verifici: „dacă numărul întrebării > lungimea listei, atunci afișează «Gata!» și scorul”. Așa programul știe când s-a terminat quiz-ul."
+  },
+  {
+    "id": "DATA-H5",
+    "domain": "data",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Într-o aplicație de poze, variabila numarPoza arată în ce căsuță apare poza (1, 2, 3 sau 4) și crește cu 1 după fiecare poză. După a patra poză trebuie să revină la 1. Ce regulă adaugi?",
+    "reference_answer_ro": "După ce crești numarPoza cu 1: dacă numarPoza > 4 (adică a ajuns la 5), atunci setează numarPoza la 1. Așa valorile merg 1, 2, 3, 4, 1, 2…",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune că „trebuie să revină la 1”, fără condiție, sau dă o condiție fără acțiune.",
+      "2": "Condiția (numarPoza > 4 sau numarPoza = 5) și acțiunea (setează la 1).",
+      "3": "Răspunsul de nivel 2 și unde se pune regula (după creștere) sau arată șirul 1, 2, 3, 4, 1…"
+    },
+    "misconceptions": [
+      {
+        "tag": "reset_always",
+        "description": "Setează la 1 după fiecare poză, fără condiție."
+      },
+      {
+        "tag": "boundary_off",
+        "description": "Pune condiția „= 4” și resetează prea devreme, așa că a patra căsuță nu mai e folosită."
+      }
+    ],
+    "explanation_ro": "După ce numarPoza crește, verifici: „dacă numarPoza > 4, atunci setează numarPoza la 1”. Așa variabila merge 1, 2, 3, 4 și apoi din nou 1. Atenție la limită: dacă scrii „= 4”, a patra căsuță nu mai primește niciodată o poză."
+  },
+  {
+    "id": "WRLD-W1",
+    "domain": "worlds",
+    "tier": "warmup",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Descrie un joc sau o lume 3D pe care ai construit-o sau ai vrea s-o construiești. Ce face jucătorul acolo?",
+    "reference_answer_ro": "Orice joc sau lume, cu o descriere a ce face jucătorul. De exemplu: un obby în care sari peste capcane până la final; un labirint în care aduni chei; o lume în CoSpaces în care vorbești cu personaje.",
+    "rubric": {
+      "0": "Răspuns lipsă sau fără legătură cu jocuri ori lumi virtuale.",
+      "1": "Doar numele unui joc existent, fără nimic despre ce face jucătorul.",
+      "2": "Un joc sau o lume și ce face jucătorul acolo.",
+      "3": "Joc sau lume, ce face jucătorul și un scop sau o regulă (cum câștigi sau cum pierzi)."
+    },
+    "misconceptions": [
+      {
+        "tag": "no_goal",
+        "description": "Descrie doar decorul, fără ce face jucătorul."
+      },
+      {
+        "tag": "only_title",
+        "description": "Dă doar numele unui joc cunoscut."
+      }
+    ],
+    "explanation_ro": "Orice joc bun are trei lucruri: un personaj, ceva de făcut (să sari, să aduni monede, să fugi de inamici) și o regulă de câștig sau de pierdere. Când îți planifici un joc, scrie mai întâi aceste trei lucruri pe hârtie. Așa este mult mai ușor să-l programezi, chiar și cu ajutorul AI-ului."
+  },
+  {
+    "id": "WRLD-W2",
+    "domain": "worlds",
+    "tier": "warmup",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "În multe jocuri 2D, un personaj are mai multe imagini, numite „costume” (de exemplu cu piciorul stâng în față, apoi cu piciorul drept). De ce schimbăm costumele repede, unul după altul?",
+    "reference_answer_ro": "Ca să pară că personajul se mișcă (merge, aleargă, zboară). Este o animație, ca la desenele animate sau la un flip-book.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune doar „ca să arate altfel” sau „ca să fie frumos”, fără ideea de mișcare.",
+      "2": "Ca să pară că se mișcă (animație).",
+      "3": "Animație și un detaliu (de exemplu o mică pauză între costume sau repetarea într-o buclă)."
+    },
+    "misconceptions": [
+      {
+        "tag": "costume_is_new_sprite",
+        "description": "Crede că fiecare costum este alt personaj."
+      },
+      {
+        "tag": "costumes_for_decor_only",
+        "description": "Crede că costumele sunt doar pentru aspect, nu pentru animație."
+      }
+    ],
+    "explanation_ro": "Când imaginile se schimbă repede una după alta, ochiul nostru vede mișcare. Așa funcționează și desenele animate. În cod se pune de obicei „următorul costum” și o mică pauză („așteaptă 0.1 secunde”) într-o buclă, ca personajul să pară că merge."
+  },
+  {
+    "id": "WRLD-E1",
+    "domain": "worlds",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Într-o lume 3D (de exemplu în CoSpaces, Roblox sau Blender), poziția unui obiect se dă prin trei numere: X, Y și Z. De ce sunt trei, nu două ca într-un joc 2D?",
+    "reference_answer_ro": "Pentru că lumea 3D are trei direcții: stânga–dreapta, față–spate (adâncime) și sus–jos (înălțime). Un joc 2D are doar două. (Care literă înseamnă „sus” diferă de la un program la altul.)",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune doar „pentru că e 3D”, fără să spună ce adaugă a treia direcție.",
+      "2": "Spune că a treia coordonată adaugă adâncimea sau înălțimea (o direcție în plus).",
+      "3": "Numește toate cele trei direcții (stânga–dreapta, față–spate, sus–jos)."
+    },
+    "misconceptions": [
+      {
+        "tag": "z_is_size",
+        "description": "Crede că al treilea număr este mărimea obiectului."
+      },
+      {
+        "tag": "z_is_rotation",
+        "description": "Crede că al treilea număr este rotația obiectului."
+      }
+    ],
+    "explanation_ro": "Într-un joc 2D ai nevoie doar de două numere: cât de la stânga sau la dreapta și cât de sus sau de jos. Într-o lume 3D mai există o direcție: față–spate (adâncimea). De aceea poziția are trei numere. În unele programe Z înseamnă „sus”, în altele Y, dar mereu sunt trei direcții."
+  },
+  {
+    "id": "WRLD-E2",
+    "domain": "worlds",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Ce este o „clonă” într-un joc (de exemplu în Scratch) și la ce este utilă?",
+    "reference_answer_ro": "O copie a unui personaj sau obiect, creată de program în timpul jocului. Este utilă când ai nevoie de multe obiecte la fel (inamici, gloanțe, stele care cad, coada șarpelui), fără să le desenezi și să le programezi pe fiecare de mână.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune doar „o copie” sau doar „pentru mulți inamici”.",
+      "2": "O copie creată de program și un folos (multe obiecte la fel).",
+      "3": "Răspunsul de nivel 2 și un detaliu: clona are propriul cod („când încep ca o clonă”) sau trebuie ștearsă când nu mai e nevoie de ea."
+    },
+    "misconceptions": [
+      {
+        "tag": "clone_is_editor_copy",
+        "description": "Crede că o clonă este același lucru cu duplicarea manuală a personajului în editor."
+      },
+      {
+        "tag": "clones_identical_behaviour",
+        "description": "Crede că toate clonele trebuie să stea în același loc și să facă exact același lucru."
+      }
+    ],
+    "explanation_ro": "O clonă este o copie a unui personaj făcută de program în timpul jocului. Cu clone poți avea zeci de inamici sau gloanțe dintr-un singur personaj. Fiecare clonă poate primi propriul cod (în Scratch: „când încep ca o clonă”) și e bine să fie ștearsă când nu mai e nevoie de ea."
+  },
+  {
+    "id": "WRLD-E3",
+    "domain": "worlds",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Într-un joc cu obstacole (obby) sau de platforme, la ce folosește un checkpoint (punct de salvare)?",
+    "reference_answer_ro": "Când personajul cade sau „moare”, reapare (respawn) la ultimul checkpoint atins, nu de la începutul traseului. Așa jocul este mai puțin frustrant și jucătorul își păstrează progresul.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Răspuns vag („te ajută”), fără ideea de reapariție.",
+      "2": "Spune că reapari acolo, nu de la început.",
+      "3": "Reapariția la checkpoint și de ce este util (nu o iei de la capăt, păstrezi progresul, jocul este mai puțin frustrant)."
+    },
+    "misconceptions": [
+      {
+        "tag": "checkpoint_is_finish",
+        "description": "Crede că checkpoint-ul este finalul jocului."
+      },
+      {
+        "tag": "checkpoint_gives_points",
+        "description": "Crede că checkpoint-ul doar dă puncte."
+      }
+    ],
+    "explanation_ro": "Un checkpoint salvează locul până la care ai ajuns. Dacă personajul cade, reapare (respawn) acolo, nu de la start. Fără checkpoint-uri, un traseu lung ar fi foarte frustrant, pentru că ai lua totul de la capăt la fiecare greșeală."
+  },
+  {
+    "id": "WRLD-E4",
+    "domain": "worlds",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un robot sau un telefon poate „simți” ce este în jurul lui cu ajutorul senzorilor. Dă un exemplu de senzor și spune ce poate detecta.",
+    "reference_answer_ro": "Senzor de distanță (ultrasunete) → obstacole; senzor de lumină → cât de luminos este; senzor de linie sau de culoare → o linie pe jos; accelerometru → când telefonul este agitat sau înclinat; GPS → locul; cameră → imagini; microfon → sunete.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Numește un senzor fără să spună ce detectează, sau ce detectează fără senzor.",
+      "2": "Un senzor și ce detectează.",
+      "3": "Senzor, ce detectează și cum îl folosește un program (de exemplu „dacă obstacolul e aproape, robotul se oprește”)."
+    },
+    "misconceptions": [
+      {
+        "tag": "sensor_is_motor",
+        "description": "Confundă senzorul cu motorul (ceva care face o acțiune)."
+      },
+      {
+        "tag": "robot_knows_without_sensor",
+        "description": "Crede că robotul știe ce este în jur fără senzori."
+      }
+    ],
+    "explanation_ro": "Senzorii sunt „simțurile” unui robot sau ale unui telefon. Un senzor de distanță detectează obstacolele, un accelerometru simte când telefonul este agitat, iar un senzor de lumină măsoară lumina. Programul citește valoarea senzorului și decide ce face, de exemplu: „dacă obstacolul e aproape, oprește motoarele”."
+  },
+  {
+    "id": "WRLD-E5",
+    "domain": "worlds",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "O imprimantă 3D nu printează pe hârtie. Cum construiește ea un obiect?",
+    "reference_answer_ro": "Topește plastic (filament) și îl depune strat cu strat, de jos în sus, după un model 3D făcut în calculator (de exemplu un fișier .stl), până se formează obiectul.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Răspuns vag („îl printează”, „cu plastic”), fără să spună cum.",
+      "2": "Ideea de straturi (construiește strat cu strat) sau plastic topit depus după un model 3D.",
+      "3": "Ambele idei (straturi și plastic topit) și faptul că pornește de la un model 3D din calculator."
+    },
+    "misconceptions": [
+      {
+        "tag": "printer_cuts",
+        "description": "Crede că imprimanta 3D taie obiectul dintr-un bloc de material."
+      },
+      {
+        "tag": "printer_copies_anything",
+        "description": "Crede că imprimanta poate copia orice obiect fără un model 3D."
+      }
+    ],
+    "explanation_ro": "O imprimantă 3D primește un model 3D din calculator (de exemplu un fișier .stl). Apoi topește un fir de plastic (filament) și îl așază strat peste strat, foarte subțire, de jos în sus. Straturile se lipesc între ele și, la final, obiectul este gata."
+  },
+  {
+    "id": "WRLD-H1",
+    "domain": "worlds",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Ai construit o platformă în aer într-un joc 3D. Când pornești jocul, platforma cade jos. De ce se întâmplă asta și ce schimbi ca să rămână în aer?",
+    "reference_answer_ro": "Platforma are fizica (gravitația) activată, deci cade ca un obiect real. Trebuie fixată: în Roblox bifezi Anchored (ancorat), în CoSpaces îi oprești fizica sau o faci statică.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune doar „din cauza gravitației”, fără reparație, sau o reparație fără sens (de exemplu „o pun mai sus”).",
+      "2": "Gravitația sau fizica o trage în jos, iar platforma trebuie fixată (ancorată, fără fizică).",
+      "3": "Răspunsul de nivel 2 și numele proprietății concrete (Anchored, fizica oprită, obiect static)."
+    },
+    "misconceptions": [
+      {
+        "tag": "put_higher",
+        "description": "Crede că, dacă o pune mai sus, nu mai cade."
+      },
+      {
+        "tag": "game_glitch",
+        "description": "Crede că este o greșeală a jocului, nu o proprietate a obiectului."
+      }
+    ],
+    "explanation_ro": "În lumile 3D cu fizică, obiectele cad ca în realitate, din cauza gravitației. O platformă care trebuie să plutească trebuie fixată: în Roblox bifezi proprietatea Anchored, iar în CoSpaces îi oprești fizica. Atunci rămâne exact unde ai pus-o."
+  },
+  {
+    "id": "WRLD-H2",
+    "domain": "worlds",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Personajul tău trece prin perete în loc să se oprească în el. Ce ar putea lipsi și cum repari?",
+    "reference_answer_ro": "Peretele nu are coliziunea activată (de exemplu CanCollide este oprit în Roblox sau peretele nu are fizică), ori, în Scratch, lipsește codul care verifică atingerea: „dacă atinge peretele, mergi înapoi”. Reparația: activezi coliziunea sau adaugi verificarea atingerii.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune vag că „e o problemă cu peretele”, fără să spună ce.",
+      "2": "Identifică lipsa coliziunii sau lipsa verificării atingerii.",
+      "3": "Identifică problema și propune reparația concretă (activezi coliziunea/CanCollide sau „dacă atinge peretele, mergi înapoi”)."
+    },
+    "misconceptions": [
+      {
+        "tag": "walls_solid_by_default",
+        "description": "Crede că orice perete desenat este automat solid."
+      },
+      {
+        "tag": "make_wall_thicker",
+        "description": "Crede că un perete mai gros rezolvă problema."
+      }
+    ],
+    "explanation_ro": "Un perete arată solid, dar programul trebuie să știe că este solid. În lumile 3D, asta este o proprietate (coliziunea, de exemplu CanCollide în Roblox). În Scratch, tu scrii regula: „dacă atinge peretele, mergi înapoi câțiva pași”. Fără una dintre ele, personajul trece prin perete ca prin aer."
+  },
+  {
+    "id": "WRLD-H3",
+    "domain": "worlds",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un cub este la poziția X = 0, Y = 5, Z = 0. O buclă se repetă de 4 ori și, de fiecare dată, adaugă 3 la X. Unde este cubul la final?",
+    "reference_answer_ro": "La X = 12, Y = 5, Z = 0. Doar X s-a schimbat: 0 + 3 + 3 + 3 + 3 = 12; Y și Z au rămas la fel.",
+    "rubric": {
+      "0": "Răspuns lipsă sau un rezultat greșit fără nicio explicație.",
+      "1": "Rezultat parțial: X greșit, dar cu o idee bună (de exemplu 9 sau 15), sau schimbă și Y ori Z.",
+      "2": "X = 12 (fără să schimbe Y și Z).",
+      "3": "Poziția completă (12, 5, 0) și explicația că doar X s-a schimbat."
+    },
+    "misconceptions": [
+      {
+        "tag": "add_to_all_axes",
+        "description": "Adaugă 3 la toate coordonatele, nu doar la X."
+      },
+      {
+        "tag": "count_wrong",
+        "description": "Numără greșit repetările sau înmulțește greșit."
+      }
+    ],
+    "explanation_ro": "La fiecare repetare, X crește cu 3: 0 → 3 → 6 → 9 → 12. Y și Z nu sunt schimbate de cod, deci rămân 5 și 0. Poziția finală este (12, 5, 0): cubul s-a mutat doar într-o singură direcție."
+  },
+  {
+    "id": "WRLD-H4",
+    "domain": "worlds",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "În Snake, coada este făcută din clone ale capului: la fiecare pas apare o clonă nouă, care se șterge după câteva secunde. Ce se întâmplă cu coada dacă clonele trăiesc mai mult? De ce?",
+    "reference_answer_ro": "Coada devine mai lungă, pentru că clonele vechi se șterg mai târziu, deci în același timp există mai multe clone pe ecran. Așa crește șarpele când mănâncă: crește timpul de viață al clonelor.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune că se schimbă ceva la coadă, dar nu că devine mai lungă.",
+      "2": "Coada devine mai lungă.",
+      "3": "Mai lungă, cu explicația: în același timp există mai multe clone, pentru că se șterg mai târziu."
+    },
+    "misconceptions": [
+      {
+        "tag": "clone_life_is_speed",
+        "description": "Crede că durata de viață a clonei schimbă viteza șarpelui."
+      },
+      {
+        "tag": "tail_shorter",
+        "description": "Crede că coada devine mai scurtă."
+      }
+    ],
+    "explanation_ro": "Capul lasă în urmă câte o clonă la fiecare pas. Dacă fiecare clonă rămâne mai mult timp înainte să fie ștearsă, pe ecran sunt mai multe clone în același timp, deci coada este mai lungă. De aceea, în Snake, când șarpele mănâncă, se mărește timpul de viață al clonelor."
+  },
+  {
+    "id": "WRLD-H5",
+    "domain": "worlds",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Vrei ca o capcană să scadă o viață doar când o atinge jucătorul, nu și când o atinge o minge sau alt obiect. Ce trebuie să verifice codul?",
+    "reference_answer_ro": "Codul trebuie să verifice cine a atins capcana: dacă obiectul care atinge face parte din personajul jucătorului (în Roblox, are un Humanoid; în Scratch, „dacă atinge Personajul”), atunci scade viața; altfel nu face nimic.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune că „trebuie să verifice atingerea”, fără să facă diferența între jucător și alte obiecte.",
+      "2": "Verifică dacă cel care atinge este jucătorul (personajul), nu orice obiect.",
+      "3": "Răspunsul de nivel 2 și cum se recunoaște jucătorul (Humanoid în Roblox, numele personajului în Scratch) sau ce se întâmplă altfel."
+    },
+    "misconceptions": [
+      {
+        "tag": "touch_is_player",
+        "description": "Crede că orice atingere vine automat de la jucător."
+      },
+      {
+        "tag": "remove_ball",
+        "description": "Propune să scoată mingea din joc în loc să verifice cine atinge."
+      }
+    ],
+    "explanation_ro": "Evenimentul „atins” pornește la orice atingere: jucător, minge, alt obiect. De aceea codul verifică cine a atins: în Scratch „dacă atinge Personajul”, iar în Roblox se verifică dacă obiectul face parte dintr-un personaj care are Humanoid. Doar atunci scade viața."
+  },
+  {
+    "id": "WEB-W1",
+    "domain": "web",
+    "tier": "warmup",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Gândește-te la un site pe care îl știi (de exemplu YouTube). Ce găsești de obicei în partea de sus a paginii?",
+    "reference_answer_ro": "Logo-ul, meniul, bara de căutare, butonul de cont sau de autentificare. Partea de sus se numește antet (header).",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Un răspuns foarte vag („lucruri”, „sus”).",
+      "2": "Cel puțin un element potrivit (logo, meniu, căutare, buton de cont).",
+      "3": "Două sau mai multe elemente potrivite, sau numește partea „antet” sau „header”."
+    },
+    "misconceptions": [
+      {
+        "tag": "no_structure",
+        "description": "Crede că paginile nu au o structură obișnuită (sus, mijloc, jos)."
+      },
+      {
+        "tag": "header_is_title_only",
+        "description": "Crede că sus este doar un titlu."
+      }
+    ],
+    "explanation_ro": "Sus, pe aproape orice site, găsești antetul (header): logo-ul, meniul, bara de căutare și butonul de cont. La mijloc este conținutul (body), iar jos subsolul (footer), cu date de contact și linkuri utile. Această structură te ajută să găsești repede ce cauți pe orice site."
+  },
+  {
+    "id": "WEB-W2",
+    "domain": "web",
+    "tier": "warmup",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Numește o aplicație de pe telefon sau de pe calculator și un buton din ea. Ce se întâmplă când apeși butonul?",
+    "reference_answer_ro": "Orice aplicație și buton reale, cu efectul lor. De exemplu: YouTube – butonul Play pornește videoclipul; Camera – butonul rotund face o poză.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Doar numele aplicației, fără buton sau fără ce face butonul.",
+      "2": "O aplicație, un buton și ce face butonul.",
+      "3": "Răspunsul de nivel 2 și observația că apăsarea pornește un cod (un eveniment), sau un al doilea exemplu."
+    },
+    "misconceptions": [
+      {
+        "tag": "button_is_decoration",
+        "description": "Crede că butoanele sunt doar desene."
+      },
+      {
+        "tag": "app_does_it_alone",
+        "description": "Crede că aplicația face lucrurile fără ca cineva să fi programat ce face fiecare buton."
+      }
+    ],
+    "explanation_ro": "Fiecare buton dintr-o aplicație are cod legat de el: „când se apasă butonul, fă ceva”. De exemplu, la Cameră butonul rotund face o poză, iar într-un joc butonul „Start” pornește jocul. Așa se programează butoanele și în App Inventor, în React Native sau pe un site."
+  },
+  {
+    "id": "WEB-E1",
+    "domain": "web",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un site se face de obicei cu HTML și CSS. Ce face HTML și ce face CSS? (Dacă n-ai făcut site-uri, încearcă din ce știi.)",
+    "reference_answer_ro": "HTML construiește structura și conținutul paginii (titluri, paragrafe, imagini, butoane, linkuri). CSS stabilește cum arată (culori, fonturi, mărimi, așezare). Ca la o casă: HTML sunt pereții și camerele, CSS este vopseaua și mobila.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Corect doar pentru una dintre ele.",
+      "2": "HTML = structura sau conținutul; CSS = aspectul sau stilul.",
+      "3": "Ambele corecte și un exemplu sau o comparație."
+    },
+    "misconceptions": [
+      {
+        "tag": "css_does_logic",
+        "description": "Crede că CSS face partea de logică sau de calcule."
+      },
+      {
+        "tag": "html_css_same",
+        "description": "Crede că HTML și CSS fac același lucru."
+      }
+    ],
+    "explanation_ro": "HTML spune ce este pe pagină: un titlu, un paragraf, o imagine, un buton. CSS spune cum arată acestea: culoare, mărime, font, unde sunt așezate. Partea care face pagina să reacționeze (de exemplu ce face un buton) se scrie de obicei cu JavaScript."
+  },
+  {
+    "id": "WEB-E2",
+    "domain": "web",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Care este diferența dintre domeniul unui site (de exemplu www.numeletau.ro) și găzduire (hosting)?",
+    "reference_answer_ro": "Domeniul este adresa site-ului, pe care o scrii ca să ajungi la el. Găzduirea este locul (serverul) unde sunt păstrate fișierele site-ului: texte, poze, cod. Ca la o casă: găzduirea este terenul pe care stă casa, domeniul este adresa de pe stradă.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Corect doar pentru una dintre ele.",
+      "2": "Domeniul = adresa; găzduirea = locul sau serverul unde stă site-ul.",
+      "3": "Ambele corecte și o comparație sau un exemplu."
+    },
+    "misconceptions": [
+      {
+        "tag": "domain_is_site",
+        "description": "Crede că domeniul conține site-ul în sine."
+      },
+      {
+        "tag": "hosting_is_browser",
+        "description": "Confundă găzduirea cu browserul."
+      }
+    ],
+    "explanation_ro": "Domeniul (de exemplu www.numeletau.ro) este adresa: o dai prietenilor ca să te găsească. Găzduirea (hosting) este calculatorul (serverul) unde stau fișierele site-ului, pornit tot timpul. Ai nevoie de amândouă: o adresă și un loc unde să stea casa."
+  },
+  {
+    "id": "WEB-E3",
+    "domain": "web",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Ce înseamnă că un site este „responsive”? (Gândește-te la același site deschis pe telefon și pe calculator.)",
+    "reference_answer_ro": "Site-ul se adaptează automat la mărimea ecranului: pe telefon se rearanjează (meniul se strânge, imaginile se micșorează, coloanele se pun una sub alta), ca să arate bine și să fie ușor de folosit pe orice ecran.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Răspuns vag („merge bine”, „e rapid”), fără ideea de ecrane diferite.",
+      "2": "Se adaptează la ecrane de mărimi diferite.",
+      "3": "Se adaptează și dă un exemplu de ce se schimbă (meniul, mărimea imaginilor, așezarea pe coloane)."
+    },
+    "misconceptions": [
+      {
+        "tag": "responsive_is_fast",
+        "description": "Crede că „responsive” înseamnă că site-ul răspunde repede."
+      },
+      {
+        "tag": "separate_sites",
+        "description": "Crede că pentru telefon trebuie făcut alt site, separat."
+      }
+    ],
+    "explanation_ro": "Un site „responsive” își schimbă singur așezarea după ecran. Pe calculator poate avea trei coloane, iar pe telefon le pune una sub alta. Imaginile se micșorează, iar meniul se ascunde adesea sub un buton cu trei liniuțe. Așa site-ul arată bine peste tot."
+  },
+  {
+    "id": "WEB-E4",
+    "domain": "web",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Faci o aplicație de telefon în care, când apeși un buton, telefonul spune „Salut!”. Ce componente îți trebuie și ce eveniment folosești?",
+    "reference_answer_ro": "Un buton (Button) și o componentă care vorbește (TextToSpeech). Evenimentul: „când se apasă butonul” (Button.Click) → apelezi „vorbește” (Speak) cu textul „Salut!”.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Doar butonul, sau doar „îl pun să vorbească”, fără legătura dintre ele.",
+      "2": "Butonul și evenimentul de apăsare care pornește vorbirea (sau sunetul).",
+      "3": "Buton, eveniment de apăsare și componenta de vorbire (TextToSpeech) cu textul „Salut!”."
+    },
+    "misconceptions": [
+      {
+        "tag": "button_speaks_itself",
+        "description": "Crede că butonul poate vorbi singur, fără o componentă de sunet sau vorbire."
+      },
+      {
+        "tag": "no_event",
+        "description": "Nu leagă vorbirea de un eveniment; crede că se întâmplă oricum."
+      }
+    ],
+    "explanation_ro": "Ai nevoie de două componente: un buton și una care transformă textul în voce (în App Inventor, TextToSpeech). Apoi le legi printr-un eveniment: „când se apasă butonul, apelează vorbește cu textul «Salut!»”. Fără eveniment, aplicația nu știe când să vorbească."
+  },
+  {
+    "id": "WEB-E5",
+    "domain": "web",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Pe un site, un bec se aprinde când apeși butonul ON și se stinge când apeși OFF. Care parte face asta: HTML, CSS sau JavaScript? De ce?",
+    "reference_answer_ro": "JavaScript: el face pagina interactivă, adică reacționează la click (onclick) și schimbă imaginea becului (de exemplu cu getElementById). HTML pune butoanele și imaginea pe pagină, iar CSS le face să arate bine.",
+    "rubric": {
+      "0": "Răspuns lipsă, sau alege HTML ori CSS fără nicio legătură cu click-ul.",
+      "1": "Alege HTML sau CSS, dar spune că e nevoie de ceva care reacționează la click.",
+      "2": "JavaScript.",
+      "3": "JavaScript și de ce (reacționează la click și schimbă imaginea)."
+    },
+    "misconceptions": [
+      {
+        "tag": "css_does_interaction",
+        "description": "Crede că CSS face interacțiunea la click."
+      },
+      {
+        "tag": "html_does_everything",
+        "description": "Crede că HTML face singur tot ce se întâmplă pe pagină."
+      }
+    ],
+    "explanation_ro": "HTML pune pe pagină butoanele și imaginea becului, CSS le face să arate bine, dar JavaScript le dă viață: „când se dă click pe ON, schimbă imaginea cu becul aprins”. Ori de câte ori o pagină reacționează la ce faci tu, de obicei este JavaScript."
+  },
+  {
+    "id": "WEB-H1",
+    "domain": "web",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Ai scris în fișierul CSS ca titlurile să fie roșii, dar pe pagină nu se schimbă nimic. Dă două motive posibile.",
+    "reference_answer_ro": "Fișierul CSS nu este legat de pagina HTML (lipsește linia <link> sau calea către fișier este greșită, de exemplu css/style.css); numele selectorului este greșit (de exemplu h2 în loc de h1, sau .titlu fără clasa în HTML); o greșeală de scriere (lipsește ; sau o acoladă); fișierul nu este salvat sau pagina nu este reîncărcată.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Un motiv vag („e o greșeală în cod”).",
+      "2": "Un motiv concret și plauzibil.",
+      "3": "Două motive concrete și plauzibile."
+    },
+    "misconceptions": [
+      {
+        "tag": "css_applies_automatically",
+        "description": "Crede că CSS-ul se aplică singur, fără să fie legat de pagină."
+      },
+      {
+        "tag": "browser_broken",
+        "description": "Crede că problema este la browser sau la calculator."
+      }
+    ],
+    "explanation_ro": "Cel mai des, fișierul CSS nu este legat de pagină: în HTML trebuie o linie <link> cu calea corectă, de exemplu css/style.css. Alte cauze: selectorul nu se potrivește cu elementul (h1 sau h2), lipsește o acoladă sau un punct și virgulă, ori pagina nu a fost salvată și reîncărcată. Verifică-le pe rând, ca un detectiv."
+  },
+  {
+    "id": "WEB-H2",
+    "domain": "web",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Pe telefon, o imagine de pe site-ul tău iese din ecran și trebuie să derulezi în lateral ca s-o vezi. De ce se întâmplă și cum repari?",
+    "reference_answer_ro": "Imaginea are o lățime fixă în pixeli (de exemplu 1200px), mai mare decât ecranul telefonului. Reparația: o faci relativă la ecran, de exemplu în CSS max-width: 100% (sau lățime în procente), ca să se micșoreze automat pe ecrane mici.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Propune doar o mărime fixă mai mică, fără ideea de adaptare, sau spune doar „e prea mare”.",
+      "2": "Imaginea are o mărime fixă mai mare decât ecranul și trebuie să se adapteze la lățimea ecranului.",
+      "3": "Răspunsul de nivel 2 și reparația concretă (max-width: 100% sau lățime în procente)."
+    },
+    "misconceptions": [
+      {
+        "tag": "smaller_fixed_size",
+        "description": "Crede că e suficientă o mărime fixă mai mică (pe alt ecran problema revine)."
+      },
+      {
+        "tag": "phone_problem",
+        "description": "Crede că este o problemă a telefonului, nu a site-ului."
+      }
+    ],
+    "explanation_ro": "Imaginea are o lățime fixă, mai mare decât ecranul telefonului, de aceea iese în afară. Soluția „responsive” este ca mărimea ei să depindă de ecran: în CSS, max-width: 100% înseamnă „niciodată mai lată decât spațiul în care stă”. Așa se micșorează singură pe telefon și rămâne mare pe calculator."
+  },
+  {
+    "id": "WEB-H3",
+    "domain": "web",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un buton „Calculează” trebuie să ia vârsta din căsuță, s-o înmulțească cu 7 și să afișeze „vârsta de cățel”. Ai scris 10 și apare 107. Ce s-a întâmplat?",
+    "reference_answer_ro": "Programul a lipit textul „10” de „7” în loc să facă înmulțirea: valoarea din căsuță este text, iar codul a folosit + (care, la text, înseamnă „lipește”) în loc de ×. Reparația: transformi textul în număr (de exemplu Number sau parseInt) și folosești * pentru înmulțire. Rezultatul corect ar fi 70.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune doar că „a calculat greșit” sau că „trebuia 70”, fără să explice.",
+      "2": "Observă că 10 și 7 au fost lipite (alăturate) ca text, sau că s-a folosit + în loc de ×.",
+      "3": "Explică ambele (text în loc de număr și + în loc de ×), sau explică una și propune reparația concretă."
+    },
+    "misconceptions": [
+      {
+        "tag": "computer_bad_math",
+        "description": "Crede că calculatorul „a greșit la matematică”."
+      },
+      {
+        "tag": "input_is_number",
+        "description": "Crede că ce scrii într-o căsuță este automat un număr."
+      }
+    ],
+    "explanation_ro": "10 lipit de 7 dă 107: programul a tratat valorile ca text și a folosit +, care la text înseamnă „lipește”. Ce scrii într-o căsuță este text, chiar dacă arată ca un număr. Trebuie transformat în număr și folosit semnul * pentru înmulțire; atunci 10 × 7 = 70."
+  },
+  {
+    "id": "WEB-H4",
+    "domain": "web",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Într-o aplicație, un buton trebuie să schimbe textul de pe ecran din „Pornit” în „Oprit”. Codul schimbă o variabilă, dar textul de pe ecran rămâne „Pornit”. Ce lipsește?",
+    "reference_answer_ro": "Schimbarea variabilei nu schimbă automat ce se vede. Trebuie actualizată și componenta de pe ecran: în App Inventor „setează Eticheta.Text la Oprit”; în React Native se folosește un state (useState) și funcția lui de schimbare, ca ecranul să se redeseneze.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune că e o greșeală la buton sau la variabilă, fără să spună că trebuie actualizat ecranul.",
+      "2": "Spune că trebuie actualizat și textul de pe ecran (eticheta), nu doar variabila.",
+      "3": "Răspunsul de nivel 2 și cum: setează Text-ul etichetei sau folosește state (useState) ca ecranul să se redeseneze."
+    },
+    "misconceptions": [
+      {
+        "tag": "variable_is_screen",
+        "description": "Crede că variabila și textul de pe ecran sunt același lucru."
+      },
+      {
+        "tag": "button_broken",
+        "description": "Crede că butonul nu funcționează."
+      }
+    ],
+    "explanation_ro": "O variabilă este o valoare în memoria programului; textul de pe ecran este altă componentă (o etichetă). Dacă schimbi doar variabila, ecranul nu află. Trebuie să-i dai și etichetei noul text (în App Inventor: „setează Eticheta.Text”) sau, în React Native, să folosești state, care redesenează ecranul automat."
+  },
+  {
+    "id": "WEB-H5",
+    "domain": "web",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "O aplicație de rețete pierde toate rețetele adăugate când o închizi și o redeschizi. Ce îi lipsește?",
+    "reference_answer_ro": "Salvarea permanentă a datelor. Acum rețetele stau doar în memoria aplicației (variabile, state), care se golește la închidere. Trebuie salvate în memoria telefonului (de exemplu AsyncStorage) sau într-o bază de date ori pe un server (de exemplu MongoDB, Firebase) și încărcate din nou la pornire.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune vag „nu merge bine” sau „trebuie reparată”, fără ideea de salvare.",
+      "2": "Spune că datele trebuie salvate undeva (în telefon, într-o bază de date, în cloud), nu doar ținute în aplicație.",
+      "3": "Răspunsul de nivel 2 și explicația că memoria aplicației se golește la închidere, sau că datele trebuie încărcate din nou la pornire."
+    },
+    "misconceptions": [
+      {
+        "tag": "apps_remember_everything",
+        "description": "Crede că aplicațiile țin minte automat tot."
+      },
+      {
+        "tag": "save_button_enough",
+        "description": "Crede că ajunge un buton „Salvează”, fără un loc unde să fie păstrate datele."
+      }
+    ],
+    "explanation_ro": "Variabilele și state-ul unei aplicații trăiesc doar cât timp aplicația este deschisă. Ca rețetele să rămână, trebuie scrise într-un loc permanent: în memoria telefonului (de exemplu AsyncStorage) sau într-o bază de date în cloud (Firebase, MongoDB). La pornire, aplicația le citește de acolo din nou."
+  },
+  {
+    "id": "AI-W1",
+    "domain": "ai",
+    "tier": "warmup",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Dă un exemplu de loc unde întâlnești inteligența artificială în viața de zi cu zi.",
+    "reference_answer_ro": "Recomandările de pe YouTube sau TikTok, filtrele de pe Instagram sau Snapchat, asistenții vocali (Siri, Alexa, Google), chatboții (ChatGPT, Gemini), Face ID, traducerea automată, inamicii din jocuri, aspiratorul robot, mașinile care se conduc singure.",
+    "rubric": {
+      "0": "Răspuns lipsă, sau un exemplu care nu folosește AI (de exemplu un calculator de buzunar), fără explicație.",
+      "1": "Un exemplu foarte vag („pe telefon”, „pe internet”).",
+      "2": "Un exemplu concret și plauzibil.",
+      "3": "Un exemplu concret și ce face AI-ul acolo (de exemplu „alege ce videoclipuri să-mi arate”)."
+    },
+    "misconceptions": [
+      {
+        "tag": "ai_is_robot",
+        "description": "Crede că AI înseamnă doar roboți de metal."
+      },
+      {
+        "tag": "any_computer_is_ai",
+        "description": "Crede că orice program de calculator este AI."
+      }
+    ],
+    "explanation_ro": "Inteligența artificială este peste tot: alege ce videoclipuri îți arată YouTube și TikTok, îți găsește fața pentru filtre, îți deblochează telefonul cu Face ID și răspunde în chatboți ca Gemini. AI-ul nu este doar în roboți: este „creierul” invizibil din multe aplicații."
+  },
+  {
+    "id": "AI-W2",
+    "domain": "ai",
+    "tier": "warmup",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un chatbot (de exemplu Gemini sau ChatGPT) îți scrie: „Mă bucur mult să te ajut!”. Se bucură el cu adevărat? De unde știe să scrie așa?",
+    "reference_answer_ro": "Nu se bucură cu adevărat: nu are sentimente, este un program. A învățat din foarte multe texte scrise de oameni cum se răspunde politicos și imită acest fel de a vorbi (ca un papagal foarte inteligent).",
+    "rubric": {
+      "0": "Răspuns lipsă, sau spune că se bucură cu adevărat, ca un om.",
+      "1": "Spune „nu știu sigur” sau doar „poate”, fără nicio explicație.",
+      "2": "Spune că nu are sentimente (este un program) sau că imită felul în care vorbesc oamenii.",
+      "3": "Spune că nu are sentimente și explică faptul că a învățat din multe texte scrise de oameni."
+    },
+    "misconceptions": [
+      {
+        "tag": "ai_has_feelings",
+        "description": "Crede că chatbotul simte emoții ca un om."
+      },
+      {
+        "tag": "ai_is_person",
+        "description": "Crede că în spatele chatbotului scrie un om."
+      }
+    ],
+    "explanation_ro": "Un chatbot nu are sentimente. A „citit” foarte multe texte scrise de oameni și a învățat cum se răspunde de obicei, inclusiv politicos. Când scrie „mă bucur”, imită felul nostru de a vorbi, ca un papagal extrem de inteligent."
+  },
+  {
+    "id": "AI-E1",
+    "domain": "ai",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Cum îți poți da seama că o imagine ar putea fi făcută cu inteligență artificială? Dă cel puțin două indicii.",
+    "reference_answer_ro": "Detalii ciudate sau greșite (mâini cu prea multe degete, text fără sens, umbre sau reflexii care nu se potrivesc), aspect prea perfect sau lucios, obiecte topite unele în altele. Poți verifica sursa imaginii sau poți face o căutare inversă după imagine.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Un singur indiciu valid, sau indicii foarte vagi (de exemplu „arată ciudat”).",
+      "2": "Cel puțin două indicii valide.",
+      "3": "Cel puțin două indicii valide și o metodă de verificare (sursa, căutare inversă) sau o explicație de ce apar aceste greșeli."
+    },
+    "misconceptions": [
+      {
+        "tag": "ai_always_obvious",
+        "description": "Crede că imaginile AI se recunosc mereu ușor și sigur."
+      },
+      {
+        "tag": "quality_means_real",
+        "description": "Crede că o imagine de calitate mare este sigur reală."
+      }
+    ],
+    "explanation_ro": "Imaginile făcute cu AI au adesea mici greșeli: mâini cu prea multe degete, litere care nu formează cuvinte, umbre care nu se potrivesc. Uneori arată prea perfect. Nu există o metodă sigură 100%, așa că e bine să verifici și de unde provine imaginea, de exemplu cu o căutare inversă după imagine."
+  },
+  {
+    "id": "AI-E2",
+    "domain": "ai",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Care este diferența dintre un program obișnuit (de exemplu un calculator de buzunar) și un program cu inteligență artificială?",
+    "reference_answer_ro": "Programul obișnuit urmează exact regulile scrise de programator și face mereu același lucru. Programul cu AI a învățat din multe exemple (date) și se poate descurca și în situații noi, pe care nu le-a mai văzut (de exemplu recunoaște o pisică într-o poză nouă).",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune doar că AI-ul este „mai deștept” sau „mai nou”, fără motiv.",
+      "2": "Programul obișnuit urmează reguli fixe, iar AI-ul învață din exemple (date).",
+      "3": "Răspunsul de nivel 2 și un exemplu (de program obișnuit și de AI)."
+    },
+    "misconceptions": [
+      {
+        "tag": "ai_never_wrong",
+        "description": "Crede că AI-ul, fiind „deștept”, nu greșește."
+      },
+      {
+        "tag": "ai_has_rule_for_everything",
+        "description": "Crede că programatorii au scris în AI câte o regulă pentru fiecare situație."
+      }
+    ],
+    "explanation_ro": "Un calculator de buzunar face exact ce i-a spus programatorul: 2 + 2 dă mereu 4. Un program cu AI a fost antrenat pe foarte multe exemple, de exemplu mii de poze cu pisici, și a învățat singur tiparele, așa că recunoaște și o pisică nouă. Dar, pentru că învață din exemple, poate și greși."
+  },
+  {
+    "id": "AI-E3",
+    "domain": "ai",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Ce este un „prompt” și cum îl faci mai bun, ca să primești de la AI exact ce vrei?",
+    "reference_answer_ro": "Promptul este mesajul (comanda) pe care i-l scrii AI-ului. Îl faci mai bun dacă este clar și detaliat: spui rolul (cine să fie AI-ul), contextul, sarcina exactă și formatul răspunsului (formula R.C.S.F.: Rol, Context, Sarcină, Format).",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Doar ce este promptul, sau doar un sfat vag („scrii frumos”).",
+      "2": "Ce este promptul și cel puțin un sfat bun (mai multe detalii, mai clar, un rol, un format).",
+      "3": "Ce este promptul și mai multe elemente (de exemplu Rol, Context, Sarcină, Format)."
+    },
+    "misconceptions": [
+      {
+        "tag": "polite_is_enough",
+        "description": "Crede că un prompt este bun doar dacă este politicos."
+      },
+      {
+        "tag": "short_is_best",
+        "description": "Crede că promptul cel mai scurt dă cel mai bun rezultat."
+      }
+    ],
+    "explanation_ro": "Promptul este comanda pe care o dai AI-ului, în cuvinte obișnuite. „Vreau un câine” dă un rezultat plictisitor. Un prompt bun spune mai mult: Rolul (de exemplu „ești un ilustrator”), Contextul, Sarcina exactă și Formatul (de exemplu „ca o poezie” sau „culori vii, lumină de apus”). Cu cât ești mai precis, cu atât rezultatul este mai aproape de ce îți imaginezi."
+  },
+  {
+    "id": "AI-E4",
+    "domain": "ai",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "De ce nu e bine să crezi orice îți spune un chatbot, de exemplu când îl folosești la o temă?",
+    "reference_answer_ro": "Poate greși sau poate inventa lucruri care sună sigur, dar nu sunt adevărate (se numesc „halucinații”); poate avea informații vechi. De aceea verifici în alte surse (manual, site-uri de încredere, profesor) și înțelegi tu ce scrii.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune doar „nu e bine” sau „e trișat”, fără ideea că poate greși.",
+      "2": "Spune că AI-ul poate greși sau poate inventa informații.",
+      "3": "Poate greși sau inventa, și cum verifici (alte surse, profesorul, manualul)."
+    },
+    "misconceptions": [
+      {
+        "tag": "ai_knows_everything",
+        "description": "Crede că AI-ul știe tot și are mereu dreptate."
+      },
+      {
+        "tag": "confident_means_correct",
+        "description": "Crede că un răspuns spus cu siguranță este sigur corect."
+      }
+    ],
+    "explanation_ro": "Un chatbot poate scrie lucruri greșite foarte convingător, ca și cum ar fi sigur. Asta se numește „halucinație”. De aceea verifici informațiile importante în alte surse: manualul, un site de încredere sau profesorul. AI-ul este un ajutor bun, dar tu decizi ce este corect."
+  },
+  {
+    "id": "AI-E5",
+    "domain": "ai",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Ce înseamnă „computer vision” (vedere artificială)? Dă un exemplu unde este folosită.",
+    "reference_answer_ro": "Este partea din AI care învață calculatorul să înțeleagă imagini și video de la o cameră: să recunoască fețe, obiecte, cifre scrise de mână. Exemple: Face ID, filtrele care îți găsesc ochii, mașinile care recunosc pietonii, sortarea deșeurilor după poză.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Doar un exemplu fără explicație, sau o explicație foarte vagă („calculatorul vede”).",
+      "2": "AI care înțelege sau recunoaște ce este în imagini sau video.",
+      "3": "Explicația și un exemplu potrivit."
+    },
+    "misconceptions": [
+      {
+        "tag": "camera_is_vision",
+        "description": "Crede că o cameră obișnuită, fără AI, înseamnă computer vision."
+      },
+      {
+        "tag": "computer_sees_like_us",
+        "description": "Crede că un calculator vede imaginea ca noi, nu ca pe niște numere (pixeli)."
+      }
+    ],
+    "explanation_ro": "Pentru un calculator, o poză este doar un tabel de numere (pixeli). Computer vision este partea din AI care învață să găsească în aceste numere forme, fețe sau obiecte. Așa funcționează Face ID, filtrele de pe TikTok și mașinile care recunosc pietonii."
+  },
+  {
+    "id": "AI-E6",
+    "domain": "ai",
+    "tier": "easy",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Ce fel de informații nu ar trebui să scrii niciodată într-un chatbot sau într-o aplicație AI? Dă cel puțin un exemplu.",
+    "reference_answer_ro": "Date personale: parola, adresa de acasă, numărul de telefon, CNP-ul, poze private, informații despre alți oameni. Ce scrii poate fi păstrat și văzut de alții.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Răspuns vag („lucruri secrete”), fără un exemplu concret.",
+      "2": "Cel puțin un tip concret de date personale (parolă, adresă, telefon, CNP, poze private).",
+      "3": "Două sau mai multe exemple și de ce (datele pot fi păstrate sau văzute de alții)."
+    },
+    "misconceptions": [
+      {
+        "tag": "chat_is_private",
+        "description": "Crede că tot ce scrii într-un chatbot rămâne secret."
+      },
+      {
+        "tag": "only_passwords",
+        "description": "Crede că doar parola este o informație personală."
+      }
+    ],
+    "explanation_ro": "Nu scrie date personale: parole, adresa, numărul de telefon, CNP-ul, poze private sau informații despre alți oameni. Ce scrii într-o aplicație poate fi păstrat pe servere și, uneori, văzut de alții. Regula simplă: nu scrie într-un chatbot nimic ce n-ai spune unui străin."
+  },
+  {
+    "id": "AI-H1",
+    "domain": "ai",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un model AI a învățat să recunoască pisici doar din poze cu pisici portocalii. Ce s-ar putea întâmpla când vede o pisică neagră? De ce?",
+    "reference_answer_ro": "S-ar putea să nu o recunoască (sau s-o confunde cu altceva), pentru că a învățat doar din exemple portocalii și poate „crede” că pisică înseamnă ceva portocaliu. Soluția: date de antrenare variate (pisici de toate culorile, în multe poziții).",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune că „ar putea greși”, fără motiv.",
+      "2": "Ar putea să nu o recunoască, pentru că a văzut doar pisici portocalii.",
+      "3": "Răspunsul de nivel 2 și soluția: exemple mai variate la antrenare."
+    },
+    "misconceptions": [
+      {
+        "tag": "ai_knows_cats_anyway",
+        "description": "Crede că AI-ul știe oricum ce este o pisică, indiferent de exemple."
+      },
+      {
+        "tag": "ai_learns_rules",
+        "description": "Crede că AI-ul a primit reguli de la programator, nu că a învățat din exemple."
+      }
+    ],
+    "explanation_ro": "Un model AI învață doar din exemplele pe care le vede. Dacă toate pisicile au fost portocalii, culoarea poate deveni pentru el un semn important, așa că o pisică neagră îl poate încurca. Soluția este să-l antrenezi cu exemple variate: pisici de toate culorile, mărimile și pozițiile."
+  },
+  {
+    "id": "AI-H2",
+    "domain": "ai",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Când antrenăm un model AI, păstrăm o parte din date deoparte și nu i le arătăm la antrenare. De ce facem asta?",
+    "reference_answer_ro": "Ca să-l testăm pe date noi, pe care nu le-a mai văzut, și să vedem dacă a învățat cu adevărat, nu doar a memorat. Este ca la un test la școală cu exerciții noi, nu chiar cele din culegere.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune vag „ca să nu se încurce” sau „ca să economisim”, fără ideea de testare.",
+      "2": "Ca să-l testăm pe date pe care nu le-a văzut.",
+      "3": "Răspunsul de nivel 2 și ideea că verificăm dacă a învățat sau doar a memorat (sau o comparație cu un test la școală)."
+    },
+    "misconceptions": [
+      {
+        "tag": "save_data_for_later",
+        "description": "Crede că datele sunt păstrate doar ca rezervă sau ca să nu fie prea multe."
+      },
+      {
+        "tag": "test_on_training_ok",
+        "description": "Crede că poți testa modelul pe aceleași date pe care a învățat."
+      }
+    ],
+    "explanation_ro": "Dacă testezi modelul pe aceleași date pe care a învățat, este ca și cum ai da la test exact exercițiile pe care le-ai rezolvat deja: poți lua 10 doar pentru că le-ai memorat. Datele puse deoparte (setul de test) sunt exerciții noi și arată dacă modelul a înțeles cu adevărat."
+  },
+  {
+    "id": "AI-H3",
+    "domain": "ai",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "În zilele în care se vând multe umbrele au loc și mai multe accidente de mașină. Înseamnă că umbrelele provoacă accidente? Explică.",
+    "reference_answer_ro": "Nu. Ambele sunt cauzate de altceva: ploaia. Când plouă, oamenii cumpără umbrele, iar drumurile sunt alunecoase și se vede greu, deci sunt mai multe accidente. Faptul că două lucruri cresc împreună (corelație) nu înseamnă că unul îl provoacă pe celălalt.",
+    "rubric": {
+      "0": "Răspuns lipsă, sau spune că umbrelele provoacă accidentele.",
+      "1": "Spune „nu”, dar fără motiv sau cu un motiv fără legătură.",
+      "2": "Spune că nu și că ploaia este cauza comună a ambelor.",
+      "3": "Răspunsul de nivel 2 și regula generală: dacă două lucruri apar împreună, nu înseamnă că unul îl provoacă pe celălalt."
+    },
+    "misconceptions": [
+      {
+        "tag": "correlation_is_causation",
+        "description": "Crede că, dacă două lucruri cresc împreună, unul îl provoacă pe celălalt."
+      },
+      {
+        "tag": "coincidence_only",
+        "description": "Crede că este doar o întâmplare și nu caută o cauză comună."
+      }
+    ],
+    "explanation_ro": "Umbrelele și accidentele cresc amândouă în zilele ploioase: ploaia este cauza comună. Când două lucruri apar împreună (se numește corelație), nu înseamnă automat că unul îl provoacă pe celălalt. Când analizezi date, tu sau un AI, întreabă-te mereu: „Nu cumva există o a treia cauză?”"
+  },
+  {
+    "id": "AI-H4",
+    "domain": "ai",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Prietenul tău scrie promptul „Fă-mi o imagine cu un câine” și rezultatul este plictisitor. Rescrie promptul ca să fie mult mai bun.",
+    "reference_answer_ro": "Un prompt cu detalii despre rol, context, sarcină și format, de exemplu: „Ești un ilustrator de desene animate. Într-un parc plin de frunze de toamnă, un câine Corgi cu fular roșu prinde un frisbee în aer. Stil 3D ca în filmele animate, culori calde, lumină de apus.”",
+    "rubric": {
+      "0": "Răspuns lipsă, sau un prompt aproape la fel ca cel inițial.",
+      "1": "Adaugă un singur detaliu (de exemplu doar rasa sau culoarea).",
+      "2": "Adaugă cel puțin două detalii clare (de exemplu ce face câinele, unde este, stilul).",
+      "3": "Un prompt bogat, care acoperă mai multe dintre: rol, context (loc, moment), acțiune, stil sau format (culori, lumină, tip de imagine)."
+    },
+    "misconceptions": [
+      {
+        "tag": "longer_words_better",
+        "description": "Crede că un prompt este mai bun doar dacă este mai lung, fără detalii utile."
+      },
+      {
+        "tag": "ai_reads_mind",
+        "description": "Crede că AI-ul ghicește singur ce își imaginează utilizatorul."
+      }
+    ],
+    "explanation_ro": "AI-ul nu îți poate citi gândurile: dacă nu-i spui ce câine, unde și în ce stil, alege el ceva banal. Un prompt bun adaugă rolul („ești un ilustrator”), contextul (locul, momentul), ce face câinele și formatul (stil, culori, lumină). Formula R.C.S.F. te ajută să nu uiți nimic."
+  },
+  {
+    "id": "AI-H5",
+    "domain": "ai",
+    "tier": "hard",
+    "bands": [
+      "lower",
+      "upper"
+    ],
+    "prompt_ro": "Un AI a făcut un video în care cafeaua care cade dintr-o cană se transformă în jeleu. De ce face AI-ul astfel de greșeli?",
+    "reference_answer_ro": "AI-ul nu înțelege legile fizicii; a învățat din multe videoclipuri cum se schimbă de obicei pixelii și „ghicește” cadrele următoare. Când situația este grea (lichide, foc, vânt), ghicește greșit (halucinație). De aceea verificăm ce produce AI-ul.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune doar că „AI-ul a greșit” sau „e o eroare”, fără motiv.",
+      "2": "Spune că AI-ul nu înțelege fizica sau lumea reală, ci ghicește din exemple ori tipare.",
+      "3": "Răspunsul de nivel 2 și precizarea că a învățat din multe exemple și prezice pixelii sau cadrele, ori că rezultatul trebuie verificat."
+    },
+    "misconceptions": [
+      {
+        "tag": "ai_bug_only",
+        "description": "Crede că este doar o greșeală de program care poate fi reparată ușor."
+      },
+      {
+        "tag": "ai_understands_physics",
+        "description": "Crede că AI-ul știe fizică, dar a ales să facă așa."
+      }
+    ],
+    "explanation_ro": "Un AI care face video nu a învățat fizica, ca la școală. A văzut multe videoclipuri și a învățat cum se schimbă de obicei pixelii de la un cadru la altul, apoi ghicește. La lucruri greu de ghicit, cum ar fi un lichid care curge, ghicește greșit. Asemenea greșeli se numesc „halucinații”, de aceea verificăm mereu ce face AI-ul."
+  },
+  {
+    "id": "AI-H6",
+    "domain": "ai",
+    "tier": "hard",
+    "bands": [
+      "upper"
+    ],
+    "prompt_ro": "Un model AI care recunoaște recenzii false are 98% răspunsuri corecte pe datele de antrenare, dar doar 55% pe datele de test. Ce s-a întâmplat?",
+    "reference_answer_ro": "Modelul a memorat datele de antrenare în loc să învețe reguli generale (supraînvățare, overfitting), așa că pe date noi se descurcă aproape la întâmplare. Ajută: date mai multe și mai variate, un model mai simplu, oprirea antrenării mai devreme.",
+    "rubric": {
+      "0": "Răspuns lipsă, greșit sau fără legătură cu întrebarea.",
+      "1": "Spune că „modelul e slab” sau că „datele de test sunt grele”, fără ideea de memorare.",
+      "2": "Modelul a memorat datele de antrenare și nu se descurcă pe date noi.",
+      "3": "Răspunsul de nivel 2 și numele fenomenului (supraînvățare, overfitting) sau o soluție (date mai multe și mai variate, model mai simplu)."
+    },
+    "misconceptions": [
+      {
+        "tag": "test_data_wrong",
+        "description": "Crede că problema este la datele de test."
+      },
+      {
+        "tag": "more_training_fixes",
+        "description": "Crede că trebuie doar antrenat mai mult pe aceleași date."
+      }
+    ],
+    "explanation_ro": "Un scor foarte mare pe datele de antrenare și unul mic pe datele noi înseamnă că modelul a memorat exemplele în loc să învețe regula. Se numește supraînvățare (overfitting). Este ca un elev care a învățat pe de rost răspunsurile din culegere, dar nu știe să rezolve o problemă nouă. Ajută datele mai multe și mai variate sau un model mai simplu."
+  }
+]
