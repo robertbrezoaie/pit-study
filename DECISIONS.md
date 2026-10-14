@@ -57,7 +57,20 @@ Rule 6 (freeze line): after the first real session, every change is logged here 
 36. **Name reaction without an LLM** (researcher's decision, 14 Oct 2026; replaces #34). The reaction after choosing a player name is drawn at random from the 8 fixed lines of spec 10.3. In tests, Ministral 14B wrote incorrect Romanian ("supereroe", "glumeță", "Bună joc") and content that does not suit children (poker, "câmpul de bătălie", points, emojis), even with a 30-word limit and an explicit instruction to write correct Romanian. The name reaction is not part of the experiment; this removes that risk entirely and one LLM call per learner. The prompt stays in `lib/prompts/names.ts` but is unused.
 37. **Monthly budget alert** (researcher's request, 14 Oct 2026; not learner-facing). Mistral does not expose the remaining allowance through the API, so the app estimates its spend: tokens logged in `llm_calls` this month × `LLM_PRICE_IN_PER_M` / `LLM_PRICE_OUT_PER_M`, against `LLM_MONTHLY_BUDGET` (set to 12.75, the API allowance included in the Education plan). An ntfy alert goes out at 50%, 80% and 95%, once per threshold per month. The check runs at most every 5 minutes per server instance, after successful LLM calls (SQL function `llm_month_usage`, migration 0003). It is an estimate: calls from local scripts are not counted, and all calls are priced at the configured rate. The hard stop is the spending limit in the Mistral console; when it is reached, the outage alert (#35) fires.
 38. **Data correction, 14 Oct 2026 ~15:35 UTC: researcher session reclassified as test.** The researcher tested without `?test=1` (player AriciRocket29, session 5df797d6-1a52-419f-bf70-77555db027b1), which created a real session and 3 bandit updates (arm hint: rewards 1, 0, 0). The session was marked `is_test = true`, its decisions `bandit_updated = false` and `excluded_reason = 'test'`, and its answers `rating_sample = false`. `bandit_state` was recomputed from the remaining eligible updates of real sessions (none), giving Beta(1,1) for every arm and n = 0. No real learner had used the study, so the freeze line was not reached.
+39. **Pilot with real children skipped** (researcher's decision, 14 Oct 2026). Spec 18 asks for a first session with 2–3 learners using `?test=1` to confirm `N_QUESTIONS` from the session length; the researcher chose not to use up learners on it. `N_QUESTIONS` stays 12. Evidence used instead: 12-learner load tests at real-class pace and the researcher's own full session.
+40. **Mistral account left as is** (researcher's decision, 14 Oct 2026). The API privacy/training setting was not changed in this setup and the previous key (…zKjO) was not revoked; the researcher considers the account settings acceptable. Parental consent is confirmed by the researcher for the families who receive the link.
 27. TypeScript is pinned to 5.x for known-good compatibility with the Next.js build.
 
 ## Freeze log
-<!-- After the first real session: date/time (UTC), APP_VERSION, what changed, why, learner-visible? -->
+
+### FREEZE declared 2026-10-14 (researcher). Code at git tag `freeze-v1`; build commit 6fee0ea900ef (also stored per session in `sessions.app_version`)
+Learner-facing configuration frozen from here on (rule 6):
+- LLM: Mistral AI via `openai_compatible`, JSON mode on; grader and tutor `mistral-medium-2604` / `mistral-medium-2604`; prompts `PROMPT_VERSION=v1` (lib/prompts/*)
+- Allocator: `RANDOM_SHARE=0.5`, bandit_state Beta(1,1) for all arms, n = 0, 0 real sessions at freeze time
+- `N_QUESTIONS=12`, `RATING_SAMPLE_P=0.25`, question bank: 62 questions, version 1, all active
+- UI: copy as spec 5.3, Punctul IT brand (#32), name reaction from fixed lines (#36); study link always open (#31); 3-character token (#33)
+- Operational (not learner-facing): phone alerts (#35), budget alert at 50/80/95% of 12.75 (#37)
+
+Allowed after the freeze: bug fixes that do not change what learners see, deactivating a question (Supabase), operational/alert changes. Each one gets an entry below: date/time (UTC), APP_VERSION, what changed, why, learner-visible yes/no.
+
+
