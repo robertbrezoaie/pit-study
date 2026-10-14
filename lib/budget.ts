@@ -25,7 +25,13 @@ export function budgetConfig() {
   return { budget, pin, pout };
 }
 
-export function estimateCost(rows: UsageRow[], pin: number, pout: number): number {
+/** Only calls to the configured (paid) models are priced; earlier free-tier models are ignored. */
+export function pricedModels(): Set<string> {
+  return new Set([process.env.LLM_MODEL_GRADER, process.env.LLM_MODEL_TUTOR].map((m) => m?.trim()).filter(Boolean) as string[]);
+}
+
+export function estimateCost(rows: UsageRow[], pin: number, pout: number, models?: Set<string>): number {
+  if (models && models.size) rows = rows.filter((r) => models.has(r.model));
   return rows.reduce((s, r) => s + (Number(r.input_tokens) * pin + Number(r.output_tokens) * pout) / 1e6, 0);
 }
 
@@ -49,7 +55,7 @@ export async function maybeCheckBudget(): Promise<void> {
   if (Date.now() - lastCheck < CHECK_EVERY_MS) return;
   lastCheck = Date.now();
   try {
-    const cost = estimateCost(await monthUsage(), cfg.pin, cfg.pout);
+    const cost = estimateCost(await monthUsage(), cfg.pin, cfg.pout, pricedModels());
     const t = crossedThreshold(cost, cfg.budget);
     if (t === null) return;
     const now = new Date();
