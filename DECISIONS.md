@@ -63,7 +63,7 @@ Rule 6 (freeze line): after the first real session, every change is logged here 
 
 ## Freeze log
 
-### FREEZE declared 2026-10-14 (researcher). Code at git tag `freeze-v1`; build commit 6fee0ea900ef (also stored per session in `sessions.app_version`)
+### FREEZE declared 2026-10-14 (researcher). Code at git tag `freeze-v1`. Learner-facing code is identical from commit 6fee0ea onward; `sessions.app_version` records the deploying commit (e8d0f71 or a later commit that changes documentation only, which `git diff freeze-v1 -- app components lib` confirms)
 Learner-facing configuration frozen from here on (rule 6):
 - LLM: Mistral AI via `openai_compatible`, JSON mode on; grader and tutor `mistral-medium-2604` / `mistral-medium-2604`; prompts `PROMPT_VERSION=v1` (lib/prompts/*)
 - Allocator: `RANDOM_SHARE=0.5`, bandit_state Beta(1,1) for all arms, n = 0, 0 real sessions at freeze time
