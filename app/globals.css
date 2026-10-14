@@ -1,18 +1,25 @@
 @import 'tailwindcss';
 
+/* Punctul IT brand (Manual de brand). Brand blue #32A3DC is used for the logo, frame and decorative
+   elements; interactive elements and text use a darker shade of the same hue so text keeps a contrast
+   of at least 4.5:1 (white on #32A3DC is only 2.8:1). See DECISIONS.md #32. */
 @theme {
-  --color-paper: #faf7f1;
+  --color-brand-bright: #32a3dc; /* brand blue: logo, frame, progress, tints */
+  --color-brand: #1c74a1; /* same hue, darker: buttons, links, selected options (5.2:1 with white) */
+  --color-brand-ink: #ffffff;
+  --color-brand-soft: #e8f5fc; /* light tint of the brand blue */
+  --color-paper: #f4f9fd;
   --color-card: #ffffff;
   --color-ink: #1c2530;
-  --color-muted: #5a6573;
-  --color-line: #ddd6c9;
-  --color-brand: #0e5a63;
-  --color-brand-ink: #ffffff;
-  --color-brand-soft: #e3f0ef;
-  --color-ok: #1d6b3a;
-  --color-ok-soft: #e4f3e8;
-  --color-note: #f6efe1;
-  --font-sans: var(--font-nunito), system-ui, sans-serif;
+  --color-muted: #55606d;
+  --color-line: #d3e3ee;
+  --color-ok: #0b7f7f; /* brand teal #0C8C8C, slightly darker for text contrast */
+  --color-ok-soft: #e3f3f3;
+  --color-accent: #f15a40; /* brand orange: small accents only, never body text */
+  --color-sun: #ffc222; /* brand yellow: small accents only */
+  --color-plum: #5e2f79; /* brand purple */
+  --color-note: #fff3d1;
+  --font-sans: var(--font-mulish), system-ui, sans-serif;
 }
 
 html,

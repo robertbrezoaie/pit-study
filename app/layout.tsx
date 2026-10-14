@@ -1,9 +1,15 @@
 import type { Metadata, Viewport } from 'next';
-import { Nunito } from 'next/font/google';
+import { Mulish } from 'next/font/google';
 import './globals.css';
 
-// next/font downloads the font at build time and serves it from this site (no external requests).
-const nunito = Nunito({ subsets: ['latin', 'latin-ext'], variable: '--font-nunito', display: 'swap' });
+// Brand font Muli (published on Google Fonts as "Mulish"). next/font downloads it at build time and
+// serves it from this site, so learner pages make no external requests (spec 3).
+const mulish = Mulish({
+  subsets: ['latin', 'latin-ext'],
+  weight: ['400', '700', '800'],
+  variable: '--font-mulish',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: 'Punctul IT',
@@ -14,7 +20,7 @@ export const viewport: Viewport = { width: 'device-width', initialScale: 1 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ro" className={nunito.variable}>
+    <html lang="ro" className={mulish.variable}>
       <body className="min-h-dvh font-sans">{children}</body>
     </html>
   );

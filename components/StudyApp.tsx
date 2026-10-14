@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { copy, EMOJI_SCALE, fill, NAME_REACTION_FALLBACKS, profileQuestions, surveyPreferred } from '@/lib/copy';
 import type { ClientState, FeedbackPayload, SessionStep } from '@/lib/types';
+import BrandShell from './BrandShell';
 
 // ---------- types and API helper ----------
 
@@ -117,10 +118,9 @@ export default function StudyApp({ token, test }: { token: string; test: boolean
   };
 
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col px-4 pt-6 pb-10 sm:px-6">
-      {test && (
-        <div className="mb-3 self-end rounded bg-note px-2 py-0.5 text-xs font-bold tracking-wider text-muted">TEST</div>
-      )}
+    <BrandShell
+      badge={test ? <span className="rounded bg-sun px-2 py-0.5 text-xs font-extrabold tracking-wider text-ink">TEST</span> : undefined}
+    >
       {view.kind === 'boot' && <Loading text="" />}
       {view.kind === 'closed' && <p className="mt-16 text-center text-[22px]">{copy['closed.text']}</p>}
       {view.kind === 'error' && <ErrorBox onRetry={() => void boot()} />}
@@ -159,7 +159,7 @@ export default function StudyApp({ token, test }: { token: string; test: boolean
           }}
         />
       )}
-    </div>
+    </BrandShell>
   );
 }
 
@@ -178,7 +178,7 @@ function Button({
   variant?: 'primary' | 'secondary' | 'link';
   type?: 'button' | 'submit';
 }) {
-  const base = 'min-h-12 rounded-xl px-6 text-[18px] font-bold transition disabled:cursor-not-allowed disabled:opacity-45';
+  const base = 'min-h-12 rounded-lg px-6 text-[18px] font-bold transition disabled:cursor-not-allowed disabled:opacity-45';
   const styles = {
     primary: 'bg-brand text-brand-ink hover:brightness-110',
     secondary: 'border-2 border-line bg-card text-ink hover:border-brand',
@@ -194,7 +194,7 @@ function Button({
 function Loading({ text }: { text: string }) {
   return (
     <div className="mt-20 flex flex-col items-center gap-5" role="status" aria-live="polite">
-      <div className="h-10 w-10 animate-spin rounded-full border-4 border-brand-soft border-t-brand" />
+      <div className="h-10 w-10 animate-spin rounded-full border-4 border-brand-soft border-t-brand-bright" />
       {text && <p className="text-[20px] text-muted">{text}</p>}
     </div>
   );
@@ -213,8 +213,8 @@ function Progress({ index, total }: { index: number; total: number }) {
   return (
     <div className="mb-6">
       <p className="mb-2 text-[16px] font-semibold text-muted">{fill(copy['q.progress'], { n: index + 1, N: total })}</p>
-      <div className="h-1.5 w-full overflow-hidden rounded-full bg-line/60">
-        <div className="h-full rounded-full bg-brand" style={{ width: `${((index + 1) / total) * 100}%` }} />
+      <div className="h-2 w-full overflow-hidden rounded-full bg-brand-soft">
+        <div className="h-full rounded-full bg-brand-bright" style={{ width: `${((index + 1) / total) * 100}%` }} />
       </div>
     </div>
   );
@@ -248,7 +248,7 @@ function AnswerBox({
         rows={5}
         disabled={disabled}
         placeholder={placeholder}
-        className="w-full resize-y rounded-xl border-2 border-line bg-card p-4 text-[18px] outline-none focus:border-brand disabled:opacity-60"
+        className="w-full resize-y rounded-xl border-2 border-line bg-card p-4 text-[18px] outline-none focus:border-brand focus-visible:outline-none disabled:opacity-60"
       />
       <p className="mt-1 text-right text-[14px] text-muted">{value.length}/600</p>
     </div>
@@ -350,7 +350,7 @@ function StartScreen({
   if (resumeUser) {
     return (
       <main className="mt-12 flex flex-col gap-8">
-        <h1 className="text-[28px] font-extrabold">{fill(copy['start.resume'], { username: resumeUser })}</h1>
+        <h1 className="text-[28px] leading-tight font-extrabold text-brand">{fill(copy['start.resume'], { username: resumeUser })}</h1>
         <div className="flex flex-wrap gap-3">
           <Button onClick={onResume}>{copy['start.resume_yes']}</Button>
           <Button variant="secondary" onClick={onNotMe}>
@@ -363,7 +363,7 @@ function StartScreen({
 
   return (
     <main className="mt-8 flex flex-col gap-6">
-      <h1 className="text-[30px] leading-tight font-extrabold">{copy['start.title']}</h1>
+      <h1 className="text-[28px] leading-tight font-extrabold text-brand sm:text-[37px]">{copy['start.title']}</h1>
       <p className="text-[18px]">{copy['start.info']}</p>
       <label className="flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border-2 border-line bg-card px-4 py-3">
         <input type="checkbox" checked={assent} onChange={(e) => setAssent(e.target.checked)} className="h-6 w-6 accent-brand" />
@@ -440,7 +440,7 @@ function NameScreen({
   if (chosen) {
     return (
       <main className="mt-12 flex flex-col items-center gap-6 text-center">
-        <p className="text-[40px] font-extrabold break-all text-brand">{chosen}</p>
+        <p className="text-[26px] font-extrabold whitespace-nowrap text-brand min-[400px]:text-[30px] sm:text-[37px]">{chosen}</p>
         <p className="min-h-[3em] text-[20px] text-muted" aria-live="polite">
           {reaction ?? ''}
         </p>
@@ -451,7 +451,7 @@ function NameScreen({
 
   return (
     <main className="mt-6 flex flex-col gap-5">
-      <h1 className="text-[28px] font-extrabold">{copy['name.title']}</h1>
+      <h1 className="text-[28px] leading-tight font-extrabold text-brand">{copy['name.title']}</h1>
       {!haveMode ? (
         <>
           <p>{copy['name.hint']}</p>
@@ -464,7 +464,7 @@ function NameScreen({
                   key={n}
                   disabled={busy}
                   onClick={() => void choose('new', n)}
-                  className="min-h-16 rounded-2xl border-2 border-line bg-card px-5 text-left text-[24px] font-bold break-all transition hover:border-brand disabled:opacity-50"
+                  className="min-h-16 rounded-xl border-2 border-line bg-card px-5 text-left text-[21px] font-bold whitespace-nowrap transition sm:text-[24px] hover:border-brand disabled:opacity-50"
                 >
                   {n}
                 </button>
@@ -499,7 +499,7 @@ function NameScreen({
               className="min-h-12 rounded-xl border-2 border-line bg-card px-4 text-[20px] outline-none focus:border-brand"
             />
           </label>
-          {notFound && <p className="font-semibold text-[#9a3412]">{copy['name.have_error']}</p>}
+          {notFound && <p className="border-l-4 border-accent pl-3 font-bold">{copy['name.have_error']}</p>}
           <div className="flex flex-wrap items-center gap-3">
             <Button type="submit" disabled={busy || !typed.trim()}>
               {copy['name.continue']}
@@ -530,7 +530,7 @@ function ProfileScreen({ onStarted, onError }: { onStarted: (s: ClientState) => 
 
   return (
     <main className="mt-6 flex flex-col gap-7">
-      <h1 className="text-[28px] font-extrabold">{copy['profile.title']}</h1>
+      <h1 className="text-[28px] leading-tight font-extrabold text-brand">{copy['profile.title']}</h1>
       {keys.map((k) => (
         <fieldset key={k} className="flex flex-col gap-3">
           <legend className="mb-3 text-[19px] font-bold">{profileQuestions[k].label}</legend>
@@ -732,8 +732,8 @@ function FeedbackScreen({
       <p className="mb-5 text-[24px] font-extrabold">{copy['mistake.title']}</p>
       {fb.kind !== 'plain' && fb.text && (
         // Hint and worked example share exactly the same box; only the label differs (rule 2).
-        <section className="mb-6 rounded-2xl border-2 border-brand/30 bg-brand-soft p-5">
-          <p className="mb-2 text-[15px] font-extrabold tracking-wide text-brand uppercase">
+        <section className="mb-6 rounded-r-xl border-l-[6px] border-brand-bright bg-brand-soft p-5">
+          <p className="mb-2 text-[16px] font-extrabold tracking-wide text-brand uppercase">
             {fb.kind === 'hint' ? copy['hint.label'] : copy['example.label']}
           </p>
           <p className="text-[18px] whitespace-pre-line">{fb.text}</p>
@@ -781,8 +781,8 @@ function ExplanationScreen({ state, onNext }: { state: SessionState; onNext: (he
       {state.result === 'success' && <p className="mb-5 text-[24px] font-extrabold text-ok">{copy['result.success']}</p>}
       {state.result === 'fail' && <p className="mb-5 text-[22px] font-bold">{copy['result.fail']}</p>}
       {graderFailed && <p className="mb-5 text-[20px] font-bold">{copy['fallback.grader']}</p>}
-      <section className="mb-8 rounded-2xl border-2 border-line bg-card p-5">
-        <p className="mb-2 text-[15px] font-extrabold tracking-wide text-muted uppercase">{copy['explanation.label']}</p>
+      <section className="mb-8 rounded-r-xl border-l-[6px] border-sun bg-note/60 p-5">
+        <p className="mb-2 text-[16px] font-extrabold tracking-wide text-muted uppercase">{copy['explanation.label']}</p>
         <p className="text-[18px]">{state.explanation}</p>
       </section>
       {state.showRating && (
@@ -822,7 +822,7 @@ function SurveyScreen({ onSubmit }: { onSubmit: (b: unknown) => Promise<void> })
 
   return (
     <main className="mt-4 flex flex-col gap-8">
-      <h1 className="text-[28px] font-extrabold">{copy['survey.title']}</h1>
+      <h1 className="text-[28px] leading-tight font-extrabold text-brand">{copy['survey.title']}</h1>
       <fieldset>
         <legend className="mb-3 text-[19px] font-bold">{surveyPreferred.label}</legend>
         <div className="flex flex-col gap-2">
@@ -867,8 +867,8 @@ function DoneScreen({ username, onDone }: { username: string; onDone: () => Prom
   }, []);
   return (
     <main className="mt-12 flex flex-col items-center gap-6 text-center">
-      <h1 className="text-[28px] font-extrabold">{fill(copy['done.title'], { username })}</h1>
-      <p className="rounded-2xl border-2 border-brand/30 bg-brand-soft px-6 py-4 text-[36px] font-extrabold break-all text-brand">
+      <h1 className="text-[28px] leading-tight font-extrabold text-brand">{fill(copy['done.title'], { username })}</h1>
+      <p className="max-w-full border-[3px] border-brand-bright px-4 py-4 text-[24px] font-extrabold whitespace-nowrap text-brand max-[359px]:px-3 max-[359px]:text-[21px] min-[400px]:text-[28px] sm:px-6 sm:text-[37px]">
         {username}
       </p>
       <p className="text-[20px]">{copy['done.save']}</p>

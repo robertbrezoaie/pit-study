@@ -1,4 +1,5 @@
 import { notFound } from 'next/navigation';
+import BrandShell from '@/components/BrandShell';
 import StudyApp from '@/components/StudyApp';
 import { copy } from '@/lib/copy';
 import { env, isStudyOpen } from '@/lib/env';
@@ -18,9 +19,9 @@ export default async function StudyPage({
   const test = sp.test === '1';
   if (!test && !isStudyOpen()) {
     return (
-      <main className="mx-auto max-w-xl px-4 py-16 text-center">
-        <p className="text-[22px]">{copy['closed.text']}</p>
-      </main>
+      <BrandShell>
+        <p className="mt-16 text-center text-[22px]">{copy['closed.text']}</p>
+      </BrandShell>
     );
   }
   return <StudyApp token={token} test={test} />;
