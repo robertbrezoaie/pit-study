@@ -1,4 +1,5 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
+import { Agent, fetch as undiciFetch } from 'undici';
 import { env } from './env';
 import type { LlmCallRow } from './llm/call';
 
@@ -34,12 +35,34 @@ export class DbError extends Error {
 
 export const UNIQUE_VIOLATION = '23505';
 
-const DB_TIMEOUT_MS = 10_000;
+// Supabase requests sometimes hung (seen in production: >10 s, then cut off). Most likely cause:
+// a pooled keep-alive connection that died while the function instance was suspended between
+// requests. Remedy: our own connection pool that drops idle sockets quickly, a 6 s limit per
+// request, and one retry on a fresh attempt. Inserts into sessions and llm_calls are not retried,
+// because a duplicate row would distort the data; every other write is idempotent here
+// (unique constraints, conditional updates, finalize_retry guard).
+const DB_TIMEOUT_MS = 6_000;
+const dbAgent = new Agent({ keepAliveTimeout: 2_000, keepAliveMaxTimeout: 5_000, connect: { timeout: 5_000 } });
+const NO_RETRY_INSERT = /\/rest\/v1\/(sessions|llm_calls)(\?|$)/;
 
-function timedFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
+function attempt(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
   const timeout = AbortSignal.timeout(DB_TIMEOUT_MS);
   const signal = init?.signal ? AbortSignal.any([init.signal, timeout]) : timeout;
-  return fetch(input, { ...init, signal });
+  const url = input instanceof Request ? input.url : String(input);
+  return undiciFetch(url, { ...(init as object), signal, dispatcher: dbAgent } as Parameters<typeof undiciFetch>[1]) as unknown as Promise<Response>;
+}
+
+async function timedFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
+  try {
+    return await attempt(input, init);
+  } catch (err) {
+    const method = (init?.method ?? 'GET').toUpperCase();
+    const url = input instanceof Request ? input.url : String(input);
+    const timedOut = (err as Error)?.name === 'TimeoutError';
+    if (!timedOut || (method === 'POST' && NO_RETRY_INSERT.test(url))) throw err;
+    console.warn(JSON.stringify({ ev: 'db_retry', method, path: new URL(url).pathname }));
+    return attempt(input, init);
+  }
 }
 
 /** Returns a CallLogger that writes llm_calls rows for the given session. */
