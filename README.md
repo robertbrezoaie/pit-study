@@ -54,7 +54,7 @@ are lost for the analysis, so act quickly.
 |---|---|---|
 | limită, HTTP 429 | requests/minute or monthly token limit reached | admin.mistral.ai → Limits: raise the limit for `ministral-14b-2512` (or ask Mistral support); check Billing |
 | buget epuizat, HTTP 402 | no credit / payment problem | admin.mistral.ai → Billing |
-| cheia nu mai e acceptată, HTTP 401/403 | key deleted, expired or wrong workspace | create a new key (admin.mistral.ai → API Keys), then `vercel env add LLM_API_KEY production --force` and redeploy (`vercel redeploy https://pit-study.vercel.app`, about 1 min); also update `.env.production.local` |
+| cheia nu mai e acceptată, HTTP 401/403 | key deleted, expired or wrong workspace | create a new key (admin.mistral.ai → API Keys), then `vercel env rm LLM_API_KEY production --yes`, `vercel env add LLM_API_KEY production` (paste the key) and `vercel redeploy https://pit-study.vercel.app --target production` (about 1 min); also update `.env.production.local`. Note: `vercel env add --force` does **not** overwrite an existing value with CLI 53, so always rm + add |
 | multe apeluri eșuează | timeouts / Mistral outage | status.mistral.ai; nothing to fix on our side, wait |
 
 **Budget alert:** at 50%, 80% and 95% of `LLM_MONTHLY_BUDGET` (estimated from logged tokens) you get a phone alert.
