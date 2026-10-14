@@ -6,7 +6,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 // Runs the real migration and the saved queries on an in-process Postgres (PGlite).
 
 let pg: PGlite;
-const migration = ['0001_init.sql', '0002_ops_alerts.sql'].map((f) => readFileSync(`supabase/migrations/${f}`, 'utf8')).join('\n');
+const migration = ['0001_init.sql', '0002_ops_alerts.sql', '0003_llm_month_usage.sql'].map((f) => readFileSync(`supabase/migrations/${f}`, 'utf8')).join('\n');
 const queries = readFileSync('supabase/queries.sql', 'utf8');
 
 beforeAll(async () => {
@@ -117,6 +117,14 @@ describe('database', () => {
     await pg.query(`insert into ops_alerts (kind, bucket) values ('llm_rate', 1)`);
     await expect(pg.query(`insert into ops_alerts (kind, bucket) values ('llm_rate', 1)`)).rejects.toThrow();
     await pg.query(`insert into ops_alerts (kind, bucket) values ('llm_auth', 1)`);
+  });
+
+  it('llm_month_usage sums this month\'s tokens per model', async () => {
+    await pg.query(`insert into llm_calls (purpose, provider, model, prompt_version, request, status, input_tokens, output_tokens)
+                    values ('grade','p','m-x','v1','{}','ok',100,10), ('hint','p','m-x','v1','{}','ok',50,5)`);
+    const r = await pg.query<{ model: string; input_tokens: number; output_tokens: number }>(`select * from llm_month_usage() where model = 'm-x'`);
+    expect(Number(r.rows[0].input_tokens)).toBe(150);
+    expect(Number(r.rows[0].output_tokens)).toBe(15);
   });
 
   it('acceptance 14: every saved query in queries.sql runs on test data', async () => {

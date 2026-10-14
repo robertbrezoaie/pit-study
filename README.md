@@ -23,7 +23,7 @@ The in-memory database is reset on every server restart.
 | Code | github.com/robertbrezoaie/pit-study (private); every push to `main` deploys |
 | Hosting | Vercel project `pit-study`, functions in `fra1`; env vars set for Production only |
 | Database | Supabase project `pit-study` (ref `ndnrvthleemlhwnsckmc`, Central EU Frankfurt) |
-| LLM | Mistral AI, `ministral-14b-2512` for grader and tutor |
+| LLM | Mistral AI, `mistral-medium-2604` (Medium 3.5) for grader and tutor; API pay-as-you-go |
 | Local copies of the production settings | `.env.production.local` (gitignored; scripts: `ENV_FILE=.env.production.local npm run …`) |
 
 ## Set up the real study
@@ -56,6 +56,10 @@ are lost for the analysis, so act quickly.
 | buget epuizat, HTTP 402 | no credit / payment problem | admin.mistral.ai → Billing |
 | cheia nu mai e acceptată, HTTP 401/403 | key deleted, expired or wrong workspace | create a new key (admin.mistral.ai → API Keys), then `vercel env add LLM_API_KEY production --force` and redeploy (`vercel redeploy https://pit-study.vercel.app`, about 1 min); also update `.env.production.local` |
 | multe apeluri eșuează | timeouts / Mistral outage | status.mistral.ai; nothing to fix on our side, wait |
+
+**Budget alert:** at 50%, 80% and 95% of `LLM_MONTHLY_BUDGET` (estimated from logged tokens) you get a phone alert.
+Check any time with `ENV_FILE=.env.production.local npm run budget`. When near 100%: raise the spending limit in
+admin.mistral.ai → Billing (or raise `LLM_MONTHLY_BUDGET` on Vercel if the allowance was increased).
 
 Afterwards run **Q7** in the SQL Editor to see whether calls succeed again (last 15 minutes).
 
