@@ -10,7 +10,7 @@ import { pick, secureRandom } from '@/lib/random';
 import { getPreOrThrow, HttpError, route } from '@/lib/session';
 
 export const maxDuration = 30;
-const schema = z.object({ text: z.string().trim().min(1).max(200) });
+const schema = z.object({ text: z.string().trim().min(1).max(400) });
 
 export const POST = route(async () => {
   const pre = await getPreOrThrow();

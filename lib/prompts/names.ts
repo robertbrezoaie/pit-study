@@ -2,7 +2,7 @@
 
 export const NAME_REACTION: Record<string, (username: string) => string> = {
   v1: (username) =>
-    `A child in a Romanian technology class chose the player name "${username}". Write ONE short, warm, funny sentence in Romanian (at most 15 words) reacting to the name, like a friendly game host. No scores, no ratings, no comparisons, nothing about appearance, nothing that could embarrass anyone. Return only JSON: {"text": "..."}`,
+    `A child in a Romanian technology class chose the player name "${username}". Write one or two short, warm, funny sentences in Romanian (at most 30 words in total) reacting to the name, like a friendly game host. Use correct Romanian spelling and grammar, with diacritics (ă, â, î, ș, ț). No scores, no ratings, no comparisons, nothing about appearance, nothing that could embarrass anyone. Return only JSON: {"text": "..."}`,
 };
 
 export function nameReactionPrompt(version: string, username: string): string {

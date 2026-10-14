@@ -35,7 +35,7 @@ export const PURPOSE_SETTINGS: Record<LlmPurpose, { temperature: number; maxToke
   grade: { temperature: 0, maxTokens: 300, timeoutMs: 12_000 },
   hint: { temperature: 0.4, maxTokens: 400, timeoutMs: 15_000 },
   example: { temperature: 0.4, maxTokens: 400, timeoutMs: 15_000 },
-  name_reaction: { temperature: 0.9, maxTokens: 80, timeoutMs: 6_000 },
+  name_reaction: { temperature: 0.9, maxTokens: 160, timeoutMs: 6_000 },
 };
 
 export function getProvider(): LlmProvider {
