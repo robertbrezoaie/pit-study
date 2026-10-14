@@ -21,6 +21,8 @@ export interface LlmResult {
   inputTokens?: number;
   outputTokens?: number;
   error?: 'timeout' | 'http' | 'other';
+  /** HTTP status of a failed provider response (401, 429, ...), for alerts. */
+  httpStatus?: number;
   /** Parameters actually sent to the provider (logged; some models reject temperature). */
   sentParams?: Record<string, unknown>;
 }

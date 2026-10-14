@@ -1,4 +1,5 @@
 import type { z } from 'zod';
+import { onLlmFailure } from '../alerts';
 import { getProvider, modelFor, PURPOSE_SETTINGS, type LlmPurpose, type LlmRequest, type LlmResult } from './adapter';
 
 export const JSON_RETRY_LINE = 'Return only valid JSON matching the schema.';
@@ -121,7 +122,10 @@ export async function callJson<S extends z.ZodTypeAny>(opts: {
       output_tokens: res.outputTokens ?? null,
     });
     if (status === 'ok') return { status, value, callId, raw, attempts };
-    if (status !== 'invalid_json') return { status, value: null, callId, raw, attempts };
+    if (status !== 'invalid_json') {
+      await onLlmFailure({ purpose: opts.purpose, model, status, httpStatus: res.httpStatus });
+      return { status, value: null, callId, raw, attempts };
+    }
     if (opts.deadline && Date.now() + settings.timeoutMs > opts.deadline) break;
     user = `${opts.user}\n\n${JSON_RETRY_LINE}`;
   }

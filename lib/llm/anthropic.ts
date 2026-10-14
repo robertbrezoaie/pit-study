@@ -55,7 +55,7 @@ export async function anthropicCall(req: LlmRequest, model: string): Promise<Llm
       return { ok: false, text: null, latencyMs, error: 'timeout', sentParams };
     }
     if (err instanceof Anthropic.APIError) {
-      return { ok: false, text: String(err.message).slice(0, 500), latencyMs, error: 'http', sentParams };
+      return { ok: false, text: String(err.message).slice(0, 500), latencyMs, error: 'http', httpStatus: err.status, sentParams };
     }
     return { ok: false, text: String(err).slice(0, 500), latencyMs, error: 'other', sentParams };
   }

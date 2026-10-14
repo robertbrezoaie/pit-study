@@ -12,7 +12,8 @@
     "import:questions": "tsx scripts/import-questions.ts",
     "smoke:grader": "tsx scripts/smoke-grader.ts",
     "load-test": "tsx scripts/load-test.ts",
-    "llm:models": "tsx scripts/llm-models.ts"
+    "llm:models": "tsx scripts/llm-models.ts",
+    "alert:test": "tsx scripts/alert-test.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.133.0",

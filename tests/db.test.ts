@@ -6,7 +6,7 @@ import { beforeAll, describe, expect, it } from 'vitest';
 // Runs the real migration and the saved queries on an in-process Postgres (PGlite).
 
 let pg: PGlite;
-const migration = readFileSync('supabase/migrations/0001_init.sql', 'utf8');
+const migration = ['0001_init.sql', '0002_ops_alerts.sql'].map((f) => readFileSync(`supabase/migrations/${f}`, 'utf8')).join('\n');
 const queries = readFileSync('supabase/queries.sql', 'utf8');
 
 beforeAll(async () => {
@@ -66,7 +66,7 @@ describe('database', () => {
     const rls = await pg.query<{ relname: string; relrowsecurity: boolean }>(
       `select relname, relrowsecurity from pg_class where relkind = 'r' and relnamespace = 'public'::regnamespace`,
     );
-    expect(rls.rows.length).toBe(9);
+    expect(rls.rows.length).toBe(10);
     expect(rls.rows.every((r) => r.relrowsecurity)).toBe(true);
   });
 
@@ -113,6 +113,12 @@ describe('database', () => {
     await expect(seedDecision(sid, qid)).rejects.toThrow();
   });
 
+  it('ops_alerts allows one alert per kind per 10-minute bucket', async () => {
+    await pg.query(`insert into ops_alerts (kind, bucket) values ('llm_rate', 1)`);
+    await expect(pg.query(`insert into ops_alerts (kind, bucket) values ('llm_rate', 1)`)).rejects.toThrow();
+    await pg.query(`insert into ops_alerts (kind, bucket) values ('llm_auth', 1)`);
+  });
+
   it('acceptance 14: every saved query in queries.sql runs on test data', async () => {
     const statements = queries
       .split('\n')
@@ -121,7 +127,7 @@ describe('database', () => {
       .split(';')
       .map((s) => s.trim())
       .filter(Boolean);
-    expect(statements.length).toBe(9);
+    expect(statements.length).toBe(11);
     for (const sql of statements) {
       await pg.query(sql);
     }

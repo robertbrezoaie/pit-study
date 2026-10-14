@@ -44,6 +44,16 @@ select purpose, status, count(*) as n,
        percentile_cont(0.95) within group (order by latency_ms) as p95_ms
 from llm_calls group by 1, 2 order by 1, 2;
 
+-- Q7. LLM health right now (during a class): calls in the last 15 minutes by purpose and status,
+--     then the latest failures with the provider's error text. Alerts are listed in ops_alerts.
+select purpose, status, count(*) as n, max(created_at) as last_at
+from llm_calls where created_at > now() - interval '15 minutes'
+group by 1, 2 order by 1, 2;
+
+select created_at, purpose, status, latency_ms, left(response_text, 200) as error_text
+from llm_calls where status <> 'ok' and created_at > now() - interval '15 minutes'
+order by created_at desc limit 20;
+
 -- Q5. Sessions started and completed, by setting
 select s.setting, count(*) as started, count(s.completed_at) as completed
 from sessions s where not s.is_test group by 1;

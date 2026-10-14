@@ -32,7 +32,7 @@ export async function openaiCompatibleCall(req: LlmRequest, model: string): Prom
     const latencyMs = Date.now() - started;
     if (!res.ok) {
       const t = await res.text().catch(() => '');
-      return { ok: false, text: `HTTP ${res.status}: ${t.slice(0, 400)}`, latencyMs, error: 'http', sentParams };
+      return { ok: false, text: `HTTP ${res.status}: ${t.slice(0, 400)}`, latencyMs, error: 'http', httpStatus: res.status, sentParams };
     }
     const json = (await res.json()) as {
       choices?: { message?: { content?: string } }[];

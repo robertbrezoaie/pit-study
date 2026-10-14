@@ -38,6 +38,27 @@ The in-memory database is reset on every server restart.
 7. Run the load test once against the deployment with the real LLM, paced like a real class of 12: `npm run load-test -- --base https://<domain> --n 12 --pace 150` (about 30 minutes). It uses `?test=1` sessions. Without `--pace`, simulated learners answer instantly and exceed the Mistral per-minute limit in a way a real class would not. Afterwards, check Q4 for any `error` rows (HTTP 429 = rate limit).
 8. **Freeze**: from the first real session on, log every change in DECISIONS.md.
 
+## Alerts during a class (Mistral stops answering)
+
+When Mistral refuses calls (HTTP 401/402/429) or at least 5 calls fail within 5 minutes, the server sends a
+push notification to the **ntfy** app on the researcher's phone: at most one per problem type per 10 minutes,
+with error codes and counts only, never learner data. Children keep going (fallbacks), but those answers
+are lost for the analysis, so act quickly.
+
+**Setup (once):** install ntfy (iOS/Android), tap "+", subscribe to the topic in `ALERT_NTFY_TOPIC`
+(`.env.production.local`; server ntfy.sh). Check with `ENV_FILE=.env.production.local npm run alert:test`.
+
+**What to do when an alert arrives:**
+
+| Alert | Likely cause | Fix |
+|---|---|---|
+| limită, HTTP 429 | requests/minute or monthly token limit reached | admin.mistral.ai → Limits: raise the limit for `ministral-14b-2512` (or ask Mistral support); check Billing |
+| buget epuizat, HTTP 402 | no credit / payment problem | admin.mistral.ai → Billing |
+| cheia nu mai e acceptată, HTTP 401/403 | key deleted, expired or wrong workspace | create a new key (admin.mistral.ai → API Keys), then `vercel env add LLM_API_KEY production --force` and redeploy (`vercel redeploy https://pit-study.vercel.app`, about 1 min); also update `.env.production.local` |
+| multe apeluri eșuează | timeouts / Mistral outage | status.mistral.ai; nothing to fix on our side, wait |
+
+Afterwards run **Q7** in the SQL Editor to see whether calls succeed again (last 15 minutes).
+
 ## Where things are
 
 | | |

@@ -3,12 +3,12 @@
 // so the whole learner flow can be exercised end-to-end without a Supabase project.
 // Supports only the calls this app makes: select/insert/update with eq/is/in/ilike, single/maybeSingle, rpc.
 
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { PGlite } from '@electric-sql/pglite';
 import { pgcrypto } from '@electric-sql/pglite/contrib/pgcrypto';
 
 type Row = Record<string, unknown>;
-type Result = { data: unknown; error: { message: string; code?: string } | null };
+type Result = { data: unknown; error: { message: string; code?: string } | null; count?: number | null };
 
 const ident = (s: string) => `"${s.replace(/"/g, '""')}"`;
 
@@ -30,15 +30,17 @@ class Query implements PromiseLike<Result> {
   private values: Row | null = null;
   private where: { sql: (i: number) => string; params: unknown[] }[] = [];
   private mode: 'many' | 'single' | 'maybe' = 'many';
+  private countOnly = false;
 
   constructor(
     private pg: Promise<PGlite>,
     private table: string,
   ) {}
 
-  select(cols = '*') {
+  select(cols = '*', opts?: { count?: 'exact'; head?: boolean }) {
     if (this.op === 'select') this.cols = cols;
     else this.returning = cols;
+    if (opts?.count && opts.head) this.countOnly = true;
     return this;
   }
   insert(row: Row) {
@@ -53,6 +55,14 @@ class Query implements PromiseLike<Result> {
   }
   eq(col: string, v: unknown) {
     this.where.push({ sql: (i) => `${ident(col)} = $${i}`, params: [v] });
+    return this;
+  }
+  neq(col: string, v: unknown) {
+    this.where.push({ sql: (i) => `${ident(col)} <> $${i}`, params: [v] });
+    return this;
+  }
+  gte(col: string, v: unknown) {
+    this.where.push({ sql: (i) => `${ident(col)} >= $${i}`, params: [v] });
     return this;
   }
   is(col: string, v: null) {
@@ -89,7 +99,9 @@ class Query implements PromiseLike<Result> {
       return ` where ${parts.join(' and ')}`;
     };
     if (this.op === 'select') {
-      const sql = `select ${cols(this.cols)} from ${ident(this.table)}`;
+      const sql = this.countOnly
+        ? `select count(*)::int as count from ${ident(this.table)}`
+        : `select ${cols(this.cols)} from ${ident(this.table)}`;
       return { sql: sql + whereSql(), params };
     }
     const entries = Object.entries(this.values ?? {}).filter(([, v]) => v !== undefined);
@@ -111,6 +123,7 @@ class Query implements PromiseLike<Result> {
     try {
       const res = await pg.query<Row>(sql, params);
       const rows = res.rows.map(fromRow);
+      if (this.countOnly) return { data: null, error: null, count: rows[0]?.count as number };
       if (this.op !== 'select' && !this.returning) return { data: null, error: null };
       if (this.mode === 'many') return { data: rows, error: null };
       if (rows.length === 0) {
@@ -140,7 +153,9 @@ export interface PgliteDb {
 export function createPgliteDb(questionsFile = 'seed/questions.json'): PgliteDb {
   const pg = (async () => {
     const db = await PGlite.create({ extensions: { pgcrypto } });
-    await db.exec(readFileSync('supabase/migrations/0001_init.sql', 'utf8'));
+    for (const f of readdirSync('supabase/migrations').filter((x) => x.endsWith('.sql')).sort()) {
+      await db.exec(readFileSync(`supabase/migrations/${f}`, 'utf8'));
+    }
     const bank = JSON.parse(readFileSync(questionsFile, 'utf8')) as Row[];
     for (const q of bank) {
       await db.query(
